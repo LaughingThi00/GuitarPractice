@@ -1,7 +1,5 @@
 import "./App.css";
-import { Button } from "react-bootstrap";
-
-import { createChordImage } from "./features/main";
+import { createChordImage } from "./features/image";
 import ListJSON from "./resource/chord/chordlibrary.json";
 import { RisingPitch } from "./features/sound";
 

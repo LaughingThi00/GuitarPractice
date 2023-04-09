@@ -61,19 +61,6 @@ transform: translateX(-5%);
  margin:500px;
 }
 
-/* .x {
-  transform: translate(-6px, -12px);
-
-  margin-left: calc(35.2px * 5);
+button+button{
+  margin-left:5px;
 }
-
-.o {
-  transform: translate(-7px, -12px);
-
-  margin-left: calc(35.2px * 0);
-}
-.note {
-  transform: translate(-14px, -12px);
-  margin-left: calc(35.2px * 4);
-  margin-top: calc(54.75px * 3);
-} */
