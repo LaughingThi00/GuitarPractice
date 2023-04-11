@@ -28,39 +28,110 @@
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.CeateChordImage {
+  background-color: brown;
+  height: auto;
+  margin: 10px;
 }
 
-.MenuType {
-  list-style-type: none;
-  height: 100%;
-}
-.MenuType button {
-  width: 20%;
-  margin: 20px;
-  padding: 20px;
-  font-size: large;
-}
-
-.board {
+.Chord-Screen {
   position: relative;
-  margin: 50px auto;
-transform: translateX(-5%);
+  width: 100%;
+  height: 700px;
+  background-color: aliceblue;
 }
-.board * {
+
+.Chord-ImageBox {
+  background-color: #9bdaeb;
+  display: block;
+  margin: 20px auto;
+  min-width: 30%;
+  min-height: 50%;
+  
+  border: #c5ccdc solid 2px;
+  border-radius: 10px 10px 10px 20px;
+}
+
+
+
+
+.Chord-Unit{
+  position: relative;
+  /* border: #fa00d0 2px solid; */
+}
+
+svg{
+  max-width: 50%;
+  max-height: 40%;
+  /* border: #000000 2px solid; */
+  
+}
+
+.CapoFret{
+  display: inline-block;
   position: absolute;
+  top:20%;
+  transform: translateX(-20%);
 }
 
-.test {
- margin:500px;
+.Chord-QueueScreen{
+  width: 70%;
+  height: 70%;
+  background-color: aquamarine;
+  margin: 20px auto;
+  overflow-y: scroll;
 }
 
-button+button{
-  margin-left:5px;
+.Chord-QueueList {
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.Chord-QueueList-Item {
+  width: 30%;
+  margin: 10px;
+  
+}
+
+button{
+  padding: 10px;
+  margin: 5px;
+  font-size:10em;
+  border: #282c34 solid 2px;
+  box-shadow: #282c34 1px 1px;
+  text-shadow: #282c34 1px 1px ;
+}
+
+.Chord-QueueList-Item .Chord-Menu button{
+  padding: 1px 4px;
+  min-width: 12%;
+ margin: 2px;
+ font-size:1.4em;
+ border: rgb(177, 177, 177) solid .2px;
+ box-shadow: #282c34 1px 1px;
+ text-shadow: #282c34 1px 1px ;
+
+}
+
+.Chord-QueueList-Item .Chord-Name{
+  min-width:50%;
+  border: #40557f 1px solid;
+  box-shadow: #282c34 2px 2px;
+  text-shadow: #282c34 1px 1px ;
+}
+
+.Chord-ImageBox{
+  width: 50%;
+  height: 30%;
+}
+
+.Chord-ImageBox .CapoFret{
+  top:25%;
+  transform: translateX(-30%);
+}
+
+.MyChord-Container{
+  padding:20px;
 }
