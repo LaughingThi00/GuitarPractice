@@ -1,29 +1,47 @@
 import { findBabyChord } from "../pages/Chord";
 import Chord from "@tombatossals/react-chords/lib/Chord";
 
-function translateData(chord,baby){
+export function createGroupFromOneChord(chord) {
+  if (!chord) return;
+
+  const ThisNameChord = chord[0];
+  const ThisFFChord = chord[1];
+
+  let group = [];
+  let count = 0;
+  ThisFFChord.forEach((item) => {
+    group.push([`${ThisNameChord} [${++count}]`, [item]]);
+  });
+
+  //  return group;
+
+  group = quickSortChordGroup(group);
+  count = 0;
+  group.forEach((item) => {
+    item[0] = `${ThisNameChord} [${++count}]`;
+    return item;
+  });
+  return quickSortChordGroup(group);
+}
+
+function translateData(chord, baby) {
   let ThisChordFret = null;
   let ThisChordFinger = null;
   let PreChordFinger = null;
-
 
   if (baby) {
     let ThisBabyChord = findBabyChord(chord[1]);
     ThisChordFret = ThisBabyChord.p.split(",");
     PreChordFinger = ThisBabyChord.f.split(";")[0].split("");
   } else {
-
     let PreThisChordPitch = chord[1];
     ThisChordFret = chord[1][0].p.split(",");
 
-    if(PreThisChordPitch[0].f.indexOf(';')!==-1){
+    if (PreThisChordPitch[0].f.indexOf(";") !== -1) {
       PreChordFinger = PreThisChordPitch[0].f.split(";")[0].split("");
-
     } else {
       PreChordFinger = PreThisChordPitch[0].f.split("");
-
     }
-
   }
   let CountFinger = 0;
   ThisChordFinger = ThisChordFret;
@@ -39,10 +57,10 @@ function translateData(chord,baby){
       }
     }
   }
-  return {fret:ThisChordFret,finger:ThisChordFinger}
+  return { fret: ThisChordFret, finger: ThisChordFinger };
 }
 
-function findCapo(fret){
+function findCapo(fret) {
   let capo = 100;
   for (let i = 0; i < fret.length; i++) {
     if (fret[i] !== 0 && fret[i] !== -1) {
@@ -55,14 +73,28 @@ function findCapo(fret){
       fret[i] -= capo;
     }
   }
-return capo
+  return capo;
+}
+export function quickSortChordGroup(arr) {
+  for (let i = 0; i < arr.length; i++) {
+    for (let x = 0; x < arr.length - 1 - i; x++) {
+      if (
+        findCapo(arr[x][1][0].p.split(",")) >
+        findCapo(arr[x + 1][1][0].p.split(","))
+      ) {
+        [arr[x], arr[x + 1]] = [arr[x + 1], arr[x]];
+      }
+    }
+  }
+
+  return arr;
 }
 
 export const MyChord = ({ fret, finger }) => {
   const chord = {
     frets: fret,
     fingers: finger,
-    barres:[1],
+    barres: [1],
     capo: true,
   };
 
@@ -76,18 +108,17 @@ export const MyChord = ({ fret, finger }) => {
     },
   };
   const lite = false; // defaults to false if omitted
-  return (  <Chord chord={chord} instrument={instrument} lite={lite} /> );
+  return <Chord chord={chord} instrument={instrument} lite={lite} />;
 };
 
-export function createChordImage(chord, baby,title) {
-
-const data=translateData(chord,baby)
+export function createChordImage(chord, baby, title) {
+  const data = translateData(chord, baby);
   return (
     <div className="MyChord-Container">
-      {title&&<h5 style={{margin:'0px 0px'}}>{chord[0]}</h5>}
+      {title && <h5 style={{ margin: "0px 0px" }}>{chord[0]}</h5>}
       <div className="Chord-Unit">
-      <h6 className="CapoFret">{findCapo(data.fret)+1}fr </h6>
-      <MyChord fret={data.fret} finger={data.finger} />
+        <h6 className="CapoFret">{findCapo(data.fret) + 1}fr </h6>
+        <MyChord fret={data.fret} finger={data.finger} />
       </div>
     </div>
   );

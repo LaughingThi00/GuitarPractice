@@ -2,13 +2,11 @@ import React, { useEffect, useRef, useState } from "react";
 import { RisingBeat } from "../features/sound";
 import { Button } from "react-bootstrap";
 import ListJSON from "../resource/chord/chordlibrary.json";
-import ListBasicJSON from "../resource/chord/basicchord.json";
 
-import { createChordImage } from "../features/image";
+import { createChordImage, createGroupFromOneChord } from "../features/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBars,
-  faBriefcase,
   faLayerGroup,
   faPlus,
   faTrash,
@@ -18,10 +16,8 @@ export function findBabyChord(chord) {
   let min = 20;
   let result = null;
   for (let idx = 0; idx < chord.length; idx++) {
-    //for each finger style (object {p,f}) of this input chord
     let p = chord[idx].p.split(",");
     for (let i = 0; i < p.length; i++) {
-      //for each word in number-string in f of a finger style
       if (p[i] === "x") {
       } else if (Number(p[i]) < min) {
         min = Number(p[i]);
@@ -34,15 +30,15 @@ export function findBabyChord(chord) {
 }
 
 const ChordPage = () => {
-  const List = Object.entries(ListJSON);
-  const BasicList = Object.entries(ListBasicJSON);
-  const [RecommendList, setRecommendList] = useState([]);
+     const List = Object.entries(ListJSON);
   const [ShowMenu, setShowMenu] = useState(false);
   const [Queue, setQueue] = useState([]);
   const [Mode, setMode] = useState("Single");
-  const [CurrentChord, setCurrentChord] = useState(null);
   const [Group, setGroup] = useState(false);
+  const [ChordShow , setChordShow]=useState(null);
   const [NowChord, setNowChord] = useState(null);
+  const [Baby, setBaby] = useState(false);
+
   var Interval = useRef(null);
   var NowChordRef = useRef(null);
 
@@ -74,7 +70,6 @@ const ChordPage = () => {
     }
   };
 
-  const [Baby, setBaby] = useState(false);
 
   const handleAdd = (chord) => {
     if (!chord || chord === "0") return;
@@ -83,7 +78,7 @@ const ChordPage = () => {
         typeof chord === "string" &&
         !Queue.includes((item) => item[0] === chord)
       ) {
-        let AddingChord = Object.entries(ListJSON).find(
+        let AddingChord = List.find(
           (item) => item[0] === chord
         );
         if (AddingChord) {
@@ -92,32 +87,45 @@ const ChordPage = () => {
       }
     }
   };
+
   const handleDelete = (chord) => {
     if (!chord || chord === "0") return;
     setQueue(Queue.filter((item) => item[0] !== chord));
   };
+
   const handleShowBaby = (chord) => {
     setBaby(!Baby);
     if (!Baby) {
-      chord = Object.entries(ListJSON).find((item) => item[0] === chord);
+      chord = List.find((item) => item[0] === chord);
       if (chord) setNowChord(chord);
     }
   };
+
   const handleShowAll = (chord) => {
-    setGroup(true);
+    setGroup(!Group)
+    setQueue(
+      createGroupFromOneChord(
+        List.find((item) => item[0] === chord)
+      )
+    );
+    handleChangeMode();
   };
-  const handlePracticeThis = (chord) => {
-    setGroup(true);
-    setMode("Single");
-  };
+
+
   const handleShowMenu = () => {
     setShowMenu(!ShowMenu);
   };
 
+  const handleChordShow = (chord) => {
+    setNowChord(Queue.find((item) => item[0] === chord));
+    if(ChordShow&&ChordShow[0]===chord) setChordShow(null);
+    else
+setChordShow(Queue.find(item=>item[0]===chord))
+  }
   return (
     <div className="Chord-Screen">
       <datalist id="team_list">
-        {Object.entries(ListJSON).map((item, index) => {
+        {List.map((item, index) => {
           return <option key={index} value={item[0]} />;
         })}
       </datalist>
@@ -144,7 +152,7 @@ const ChordPage = () => {
                   {ShowMenu && (
                     <div className="Chord-Menu">
                       <Button
-                        onClick={() => handleAdd(item[0])}
+                        onClick={() => handleChordShow(item[0])}
                         variant="success"
                       >
                         <FontAwesomeIcon icon={faPlus} />
@@ -161,12 +169,7 @@ const ChordPage = () => {
                       >
                         <FontAwesomeIcon icon={faLayerGroup} />{" "}
                       </Button>
-                      <Button
-                        onClick={() => handlePracticeThis(item[0])}
-                        variant="secondary"
-                      >
-                        <FontAwesomeIcon icon={faBriefcase} />{" "}
-                      </Button>
+                      
                     </div>
                   )}
 
@@ -177,9 +180,9 @@ const ChordPage = () => {
                   >
                     {<h3> {item[0]}</h3>}
                   </Button>
-                  {Baby &&
-                    item[0] === NowChord[0] &&
-                    createChordImage(item, true, false)}
+                  {ChordShow &&
+                    item[0] === ChordShow[0] &&
+                    createChordImage(ChordShow, true, false)}
                 </li>
               );
             })}
