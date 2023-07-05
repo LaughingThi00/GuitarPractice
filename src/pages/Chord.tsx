@@ -54,7 +54,7 @@ const ChordPage = () => {
           setNowChord(Queue[0]);
         } else {
           let idx = Queue.findIndex(
-            (item) => item[0] === NowChordRef.current[0]
+            (item) =>item[0] === NowChordRef.current[0]
           );
 
           if (idx === -1 || idx === Queue.length - 1) {
@@ -135,7 +135,7 @@ setChordShow(Queue.find(item=>item[0]===chord))
         name="team"
         id="favorite_team"
         list="team_list"
-        onClick={(e) => handleAdd(e.target.value)}
+        onClick={(e) => handleAdd(e.currentTarget.value)}
       />
 
       <div className="Chord-QueueScreen">

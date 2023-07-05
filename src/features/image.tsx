@@ -31,6 +31,7 @@ function translateData(chord, baby) {
 
   if (baby) {
     let ThisBabyChord = findBabyChord(chord[1]);
+
     ThisChordFret = ThisBabyChord.p.split(",");
     PreChordFinger = ThisBabyChord.f.split(";")[0].split("");
   } else {

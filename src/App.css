@@ -47,34 +47,30 @@
   margin: 20px auto;
   min-width: 30%;
   min-height: 50%;
-  
+
   border: #c5ccdc solid 2px;
   border-radius: 10px 10px 10px 20px;
 }
 
-
-
-
-.Chord-Unit{
+.Chord-Unit {
   position: relative;
   /* border: #fa00d0 2px solid; */
 }
 
-svg{
+svg {
   max-width: 50%;
   max-height: 40%;
   /* border: #000000 2px solid; */
-  
 }
 
-.CapoFret{
+.CapoFret {
   display: inline-block;
   position: absolute;
-  top:20%;
+  top: 20%;
   transform: translateX(-20%);
 }
 
-.Chord-QueueScreen{
+.Chord-QueueScreen {
   width: 70%;
   height: 70%;
   background-color: aquamarine;
@@ -92,46 +88,76 @@ svg{
 .Chord-QueueList-Item {
   width: 30%;
   margin: 10px;
-  
 }
 
-button{
+button {
   padding: 10px;
   margin: 5px;
-  font-size:10em;
+  font-size: 10em;
   border: #282c34 solid 2px;
   box-shadow: #282c34 1px 1px;
-  text-shadow: #282c34 1px 1px ;
+  text-shadow: #282c34 1px 1px;
 }
 
-.Chord-QueueList-Item .Chord-Menu button{
+.Chord-QueueList-Item .Chord-Menu button {
   padding: 1px 4px;
   min-width: 12%;
- margin: 2px;
- font-size:1.4em;
- border: rgb(177, 177, 177) solid .2px;
- box-shadow: #282c34 1px 1px;
- text-shadow: #282c34 1px 1px ;
-
+  margin: 2px;
+  font-size: 1.4em;
+  border: rgb(177, 177, 177) solid 0.2px;
+  box-shadow: #282c34 1px 1px;
+  text-shadow: #282c34 1px 1px;
 }
 
-.Chord-QueueList-Item .Chord-Name{
-  min-width:50%;
+.Chord-QueueList-Item .Chord-Name {
+  min-width: 50%;
   border: #40557f 1px solid;
   box-shadow: #282c34 2px 2px;
-  text-shadow: #282c34 1px 1px ;
+  text-shadow: #282c34 1px 1px;
 }
 
-.Chord-ImageBox{
+.Chord-ImageBox {
   width: 50%;
   height: 30%;
 }
 
-.Chord-ImageBox .CapoFret{
-  top:25%;
+.Chord-ImageBox .CapoFret {
+  top: 25%;
   transform: translateX(-30%);
 }
 
-.MyChord-Container{
-  padding:20px;
+.MyChord-Container {
+  padding: 20px;
+}
+
+.header {
+  height: 150px;
+  background-color: #c5ccdc;
+}
+
+.header .header-text{
+  color:#40557f;
+  font-weight: bolder;
+  font-size: larger;
+  padding-top:20px;
+  
+}
+
+.header ul {
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.header ul li {
+  margin: 20px;
+  width: 130px;
+  padding: 10px 20px;
+  border: black solid 2px;
+  background-color: aqua;
+}
+
+.header a{
+  text-decoration: none;
 }
