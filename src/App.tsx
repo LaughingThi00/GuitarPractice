@@ -1,5 +1,7 @@
 import { Outlet } from "react-router-dom";
-import "./App.css";
+import "./css/App.css";
+import "./css/Chord.css";
+
 import Header from "./pages/outline/Header";
 import React from "react";
 

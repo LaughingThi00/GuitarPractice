@@ -1,0 +1,74 @@
+.CeateChordImage {
+  background-color: brown;
+  height: auto;
+  margin: 10px;
+}
+
+.Chord-Unit {
+  position: relative;
+  /* border: #fa00d0 2px solid; */
+}
+
+.Chord-QueueScreen {
+  background-color: aquamarine;
+  overflow-y: scroll;
+}
+
+.Chord-QueueList {
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.Chord-ImageBox {
+  background-color: #9bdaeb;
+  display: block;
+}
+
+.MyChord-Container {
+  padding: 20px;
+}
+
+.ChordItem {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #000000;
+  margin: 2px;
+  color: #000;
+  font-weight: bold;
+  padding: 0.375rem 0.75rem;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 0.25rem;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
+  width: 80%;
+}
+
+.ChordItem:hover {
+ opacity: .7;
+}
+
+.ChordItemChosen{
+  background-color: #8fff07;
+
+}
+.ChordItemGroup{
+  background-color: #ffc107;
+
+}
+
+.ChordItemShowing{
+  background-color: #3c7dd7;
+
+}
+
+h3{
+  display: block;
+
+}

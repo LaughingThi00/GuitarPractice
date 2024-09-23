@@ -1,16 +1,26 @@
-import { findBabyChord } from "../pages/Chord";
 import Chord from "@tombatossals/react-chords/lib/Chord";
+import ListJSON from "../resource/chord/chordlibrary.json";
+import { findBabyChord } from "../pages/ChordPage/utils/utils";
 
-export function createGroupFromOneChord(chord) {
-  if (!chord) return;
+const List = Object.entries(ListJSON);
 
+export const addTimestamp = (chord) => {
+  if (!Array.isArray(chord)) return chord;
+  if (chord.length !== 2) return chord;
+
+  const timestamp = String(Math.floor(Math.random() * 100000));
+  return [...chord, timestamp];
+};
+export const createGroupFromOneChord = (chord) => {
+  if (!chord) return [];
   const ThisNameChord = chord[0];
   const ThisFFChord = chord[1];
 
   let group = [];
   let count = 0;
   ThisFFChord.forEach((item) => {
-    group.push([`${ThisNameChord} [${++count}]`, [item]]);
+    const AddingChord = [`${ThisNameChord} [${++count}]`, [item]];
+    group.push(addTimestamp(AddingChord));
   });
 
   //  return group;
@@ -22,7 +32,26 @@ export function createGroupFromOneChord(chord) {
     return item;
   });
   return quickSortChordGroup(group);
-}
+};
+
+export const pickFirstChordFromGroup = (chord) => {
+  if (!chord) return undefined;
+  const AddingChord = [`${chord[0]} [1]`, chord[1]];
+  return addTimestamp(AddingChord);
+};
+export const createGroupFromChordSet = (list, scale, set) => {
+  if (!list || !scale || !set) return;
+
+  const resList = [];
+  const listSet = set.set.map((item) => scale + item);
+
+  list.forEach((chord) => {
+    if (listSet.includes(chord[0])) resList.push(chord);
+  });
+
+  return resList;
+  // return origin form of chord set
+};
 
 function translateData(chord, baby) {
   let ThisChordFret = null;
@@ -112,13 +141,28 @@ export const MyChord = ({ fret, finger }) => {
   return <Chord chord={chord} instrument={instrument} lite={lite} />;
 };
 
-export function createChordImage(chord, baby, title) {
+export function createChordImage(chord, baby, showName) {
   const data = translateData(chord, baby);
+  let name = null;
+  if (showName) {
+    name = chord[0].includes(" ") ? (
+      <>
+        <span className="m-0 text-4xl inline font-bold relative">
+          {chord[0].split(" ")[0]}{" "}
+          <span className="ml-2 text-2xl inline font-bold text-neutral-500 absolute">
+            {chord[0].split(" ")[1]}
+          </span>
+        </span>
+      </>
+    ) : (
+      <span className="m-0 text-4xl font-bold">{chord[0]}</span>
+    );
+  }
   return (
-    <div className="MyChord-Container">
-      {title && <h5 style={{ margin: "0px 0px" }}>{chord[0]}</h5>}
-      <div className="Chord-Unit">
-        <h6 className="CapoFret">{findCapo(data.fret) + 1}fr </h6>
+    <div className="MyChord-Container flex flex-column justify-center ">
+      {showName && name}
+      <div className="Chord-Unit flex flex-row justify-center items-center ">
+        <div className="text-xl">[{findCapo(data.fret) + 1}fr] </div>
         <MyChord fret={data.fret} finger={data.finger} />
       </div>
     </div>

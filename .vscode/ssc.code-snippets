@@ -1,0 +1,15 @@
+{
+	"Set State Component": {
+		"prefix": "ssc",
+		"body": [
+			"const [state, setState] = useState(false);",
+			"const handleUpdateState = () => {",
+			"setState(true);",
+			"};",
+			"return (",
+			"<Button onClick={handleUpdateState} variant='success'></Button>",
+			");"
+		],
+		"description": "Create a state in React project file, using useState, return a Button having onClick function"
+	}
+}

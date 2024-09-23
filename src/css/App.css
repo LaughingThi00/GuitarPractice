@@ -1,0 +1,79 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+svg {
+  max-width: 50%;
+  max-height: 40%;
+  /* border: #000000 2px solid; */
+}
+
+button {
+  padding: 10px;
+  margin: 5px;
+  font-size: 10em;
+  border: #282c34 solid 2px;
+  box-shadow: #282c34 1px 1px;
+  text-shadow: #282c34 1px 1px;
+}
+
+.header {
+  height: 150px;
+  background-color: #c5ccdc;
+}
+
+.header .header-text {
+  color: #40557f;
+  font-weight: bolder;
+  font-size: larger;
+  padding-top: 20px;
+}
+
+.header ul {
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.header ul li {
+  margin: 20px;
+  width: 130px;
+  padding: 10px 20px;
+  border: black solid 2px;
+  background-color: aqua;
+}
+
+.header a {
+  text-decoration: none;
+}
