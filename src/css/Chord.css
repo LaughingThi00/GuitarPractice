@@ -6,7 +6,6 @@
 
 .Chord-Unit {
   position: relative;
-  /* border: #fa00d0 2px solid; */
 }
 
 .Chord-QueueScreen {
@@ -33,42 +32,53 @@
 }
 
 .ChordItem {
-  box-sizing: border-box;
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid #000000;
-  margin: 2px;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+  width: 80%;
+
+  box-sizing: border-box;
+  padding: 0.2rem 0.4rem;
+  margin: 0.4rem 0.1rem;
+
   color: #000;
   font-weight: bold;
-  padding: 0.375rem 0.75rem;
   text-align: center;
-  cursor: pointer;
+
   border-radius: 0.25rem;
-  transition: background-color 0.3s ease, border-color 0.3s ease;
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
-  width: 80%;
+  border-right:  1.5px solid rgb(43, 42, 42);
+  border-bottom:  1.5px solid rgb(43, 42, 42);
+  box-shadow: 0rem 0.4rem 0.8rem 0.2rem rgba(0, 0, 0, 0.5);
+
+  cursor: pointer;
 }
 
 .ChordItem:hover {
- opacity: .7;
+  opacity: 0.7;
 }
 
-.ChordItemChosen{
+.ChordItemChosen {
   background-color: #8fff07;
-
 }
-.ChordItemGroup{
+.ChordItemGroup {
   background-color: #ffc107;
-
 }
 
-.ChordItemShowing{
+.ChordItemShowing {
   background-color: #3c7dd7;
-
 }
 
-h3{
+h3 {
   display: block;
+}
 
+.ChorDItemButton{
+  padding: 0.25rem; 
+  font-size: 1.25rem;
+  margin:2px; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  height: 25%;
 }

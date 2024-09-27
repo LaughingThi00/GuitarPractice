@@ -1,16 +1,17 @@
 import React, { useContext } from "react";
-import { ChordPageContext } from "../Chord";
+import { ChordPageContext } from "./../provider/ChordProvider";
 import { Button } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
+  fa7,
   faAnglesRight,
+  faBolt,
   faBroom,
   faGear,
   faPlus,
   faTrash,
 } from "@fortawesome/free-solid-svg-icons";
 import Select from "react-select";
-import { optionsRing } from "../options/options";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { ContentType } from "../types/types";
 
@@ -23,31 +24,28 @@ const ListPart = () => {
     handleShowMenu,
     Queue,
     handleClearQueue,
-    ringOption,
-    handleChangeRingOption,
     NowChord,
     setNowChord,
     handleAdd,
     handleDelete,
     handleShowAll,
-    degreedChord,
+    addDegreeToChord,
     handleChangeChordForm,
     handleOnDragEnd,
+    ChordList,
+    empowerOneChord,
+    findFifth
   } = useContext(ChordPageContext);
   return (
     <div className="w-1/6 Chord-QueueScreen flex flex-column justify-start items-center p-2 ">
       <div className="Chord-QueueList bg-blue-200">
-        <div className="my-4">
-          <input
-            placeholder="Choose a chord"
-            type="text"
-            name="team"
-            id="favorite_team"
-            list="team_list"
-            className="p-2 w-full border-gray-300 rounded"
-            onClick={(e) => handleAdd(e.currentTarget.value)}
-          />
-        </div>
+        <Select
+          options={ChordList}
+          placeholder="Choose a chord"
+          onChange={handleAdd}
+          className="m-2 w-full"
+        />
+
         <Button onClick={() => handleShowMenu()} variant="light">
           <FontAwesomeIcon icon={faGear} />{" "}
         </Button>
@@ -55,13 +53,6 @@ const ListPart = () => {
           <FontAwesomeIcon icon={faBroom} />{" "}
         </Button>
 
-        <Select
-          options={optionsRing}
-          placeholder="Choose a chord ring"
-          onChange={handleChangeRingOption}
-          value={ringOption}
-          className="m-2"
-        />
         <DragDropContext onDragEnd={handleOnDragEnd}>
           <Droppable droppableId="playlist">
             {(provided) => (
@@ -72,7 +63,7 @@ const ListPart = () => {
               >
                 {Queue &&
                   Queue.map((item, index) => {
-                    const nameChord = degreedChord(item[0]);
+                    const nameChord = addDegreeToChord(item)[0];
                     return (
                       <Draggable
                         key={item[2]}
@@ -141,30 +132,51 @@ const ListPart = () => {
                               )}
                             </div>
                             {ShowMenu && (
-                              <div className="Chord-Menu flex flex-column">
-                                <Button
-                                  onClick={() => handleDelete(item)}
-                                  variant="danger"
-                                  className="p-2 text-xl flex items-center justify-center "
-                                >
-                                  <FontAwesomeIcon icon={faTrash} />{" "}
-                                </Button>
+                              <div className="Chord-Menu flex flex-column flex-wrap	justify-center">
                                 <Button
                                   variant="info"
-                                  className="p-2 text-xl flex items-center justify-center "
+                                  className="ChorDItemButton"
                                   onClick={() => handleChangeChordForm(item)}
                                 >
                                   <FontAwesomeIcon icon={faAnglesRight} />{" "}
                                 </Button>
-                                {Content === ContentType.Custom && (
+                                {Content === ContentType.HarmonyBased ? (
+                                  <>
+                                    <Button
+                                      variant="warning"
+                                      className="ChorDItemButton"
+                                      onClick={() =>
+                                        empowerOneChord(addDegreeToChord(item))
+                                      }
+                                    >
+                                      <FontAwesomeIcon icon={faBolt} />{" "}
+                                    </Button>
+                                    <Button
+                                      variant="light"
+                                      className="ChorDItemButton"
+                                      onClick={() =>
+                                        findFifth(addDegreeToChord(item))
+                                      }
+                                    >
+                                      <FontAwesomeIcon icon={fa7} className="text-sm"/>
+                                    </Button>
+                                  </>
+                                ) : (
                                   <Button
                                     variant="light"
-                                    className="p-2 text-xl flex items-center justify-center "
+                                    className="ChorDItemButton"
                                     onClick={() => handleShowAll(item)}
                                   >
                                     <FontAwesomeIcon icon={faPlus} />{" "}
                                   </Button>
                                 )}
+                                <Button
+                                  onClick={() => handleDelete(item)}
+                                  variant="danger"
+                                  className="ChorDItemButton"
+                                >
+                                  <FontAwesomeIcon icon={faTrash} />{" "}
+                                </Button>
                               </div>
                             )}
                           </li>

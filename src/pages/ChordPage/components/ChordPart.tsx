@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { RisingBeat } from "../../../features/sound";
 import { Button } from "react-bootstrap";
 import { createChordImage } from "../../../features/image";
-import { ChordPageContext } from "../Chord";
+import { ChordPageContext } from "./../provider/ChordProvider";
 
 const ChordPart = () => {
   const {

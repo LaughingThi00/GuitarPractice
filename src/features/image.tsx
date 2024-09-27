@@ -1,6 +1,12 @@
 import Chord from "@tombatossals/react-chords/lib/Chord";
 import ListJSON from "../resource/chord/chordlibrary.json";
-import { findBabyChord } from "../pages/ChordPage/utils/utils";
+import {
+  findBabyChord,
+  findDegree,
+  findForm,
+  refreshChordName,
+} from "../pages/ChordPage/utils/utils";
+import { romanize } from "romans";
 
 const List = Object.entries(ListJSON);
 
@@ -23,7 +29,6 @@ export const createGroupFromOneChord = (chord) => {
     group.push(addTimestamp(AddingChord));
   });
 
-  //  return group;
 
   group = quickSortChordGroup(group);
   count = 0;
@@ -50,7 +55,6 @@ export const createGroupFromChordSet = (list, scale, set) => {
   });
 
   return resList;
-  // return origin form of chord set
 };
 
 function translateData(chord, baby) {
@@ -137,7 +141,7 @@ export const MyChord = ({ fret, finger }) => {
       standard: ["E", "A", "D", "G", "B", "E"],
     },
   };
-  const lite = false; // defaults to false if omitted
+  const lite = false; 
   return <Chord chord={chord} instrument={instrument} lite={lite} />;
 };
 
@@ -148,10 +152,13 @@ export function createChordImage(chord, baby, showName) {
     name = chord[0].includes(" ") ? (
       <>
         <span className="m-0 text-4xl inline font-bold relative">
-          {chord[0].split(" ")[0]}{" "}
+          <span>{refreshChordName(chord[0])} </span>
           <span className="ml-2 text-2xl inline font-bold text-neutral-500 absolute">
-            {chord[0].split(" ")[1]}
+            {findForm(chord[0])}
           </span>
+          {/* <span className=" top-10 text-xl inline font-bold text-red-500 absolute">
+            [{romanize(findDegree(chord[0]))}]
+          </span> */}
         </span>
       </>
     ) : (
@@ -161,8 +168,10 @@ export function createChordImage(chord, baby, showName) {
   return (
     <div className="MyChord-Container flex flex-column justify-center ">
       {showName && name}
-      <div className="Chord-Unit flex flex-row justify-center items-center ">
-        <div className="text-xl">[{findCapo(data.fret) + 1}fr] </div>
+      <div className="Chord-Unit flex flex-row justify-center items-center relative">
+        <div className=" absolute bottom-0 left-1/4 h-3/4 text-xl">
+          [{findCapo(data.fret) + 1}fr]{" "}
+        </div>
         <MyChord fret={data.fret} finger={data.finger} />
       </div>
     </div>

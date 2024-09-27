@@ -1,10 +1,11 @@
 import React, { useContext } from "react";
-import { ChordPageContext } from "../Chord";
+import { ChordPageContext } from "./../provider/ChordProvider";
 import { ContentType } from "../types/types";
 import Select from "react-select";
 import {
   optionsHarmonyBased,
   optionsNote,
+  optionsRing,
   optionsTone,
   optionsTonicBased,
 } from "../options/options";
@@ -31,11 +32,13 @@ const SettingPart = () => {
     handleHideDegree,
     handleChangeContent,
     handleChangeAllowRepeat,
+    handleChangeRingOption,
+    ringOption,
   } = useContext(ChordPageContext);
 
   return (
     <div className="w-1/6 flex flex-column bg-blue-200">
-      <div>
+      <div className="flex flex-column">
         <Button onClick={handleHideForm} variant="success">
           HideForm: {String(HideForm)}
         </Button>
@@ -50,6 +53,7 @@ const SettingPart = () => {
         <Button variant="secondary" onClick={() => handleChangeAllowRepeat()}>
           {AllowRepeat ? "Repeated" : "Only"}
         </Button>
+
         {Content !== ContentType.Custom && (
           <div>
             <Select
@@ -88,6 +92,15 @@ const SettingPart = () => {
               placeholder="Choose an option"
               className="m-2"
             />
+            {Content === ContentType.HarmonyBased && (
+              <Select
+                options={optionsRing}
+                placeholder="Choose a chord ring"
+                onChange={handleChangeRingOption}
+                value={ringOption}
+                className="m-2"
+              />
+            )}
             <Button onClick={() => handleBuildChorSet()} variant="success">
               <FontAwesomeIcon icon={faArrowsToDot} />{" "}
             </Button>

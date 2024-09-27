@@ -41,11 +41,9 @@ export function RisingBeat() {
 
   const handlePlay = () => {
     if (PlayState) {
-      // console.log(new Date().toUTCString(), "Play state:", PlayState);
       stop();
       setPlayState(false);
     } else {
-      // console.log(new Date().toUTCString(), "Play state:", PlayState);
       play();
       setPlayState(true);
     }
@@ -123,11 +121,9 @@ export function RisingBackingTrack() {
 
   const handlePlay = () => {
     if (PlayState) {
-      // console.log(new Date().toUTCString(), "Play state:", PlayState);
       stop();
       setPlayState(false);
     } else {
-      // console.log(new Date().toUTCString(), "Play state:", PlayState);
       play();
       setPlayState(true);
     }
