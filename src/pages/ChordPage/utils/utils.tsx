@@ -53,9 +53,7 @@ export function replaceChordInQueue(queue, chord, replaceArr) {
   const chordName = chord[0];
   const index = queue.findIndex((c) => {
     if (c[2] === chord[2])
-      return c[0].includes("-")
-        ? c[0].split("-")[1].split(" ")[0]
-        : c[0].split(" ")[0] === chordName.split("-")[1].split(" ")[0];
+      return refreshChordName(c[0]) === refreshChordName(chordName);
   });
   if (index !== -1) {
     queue.splice(index, 1, ...replaceArr);

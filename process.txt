@@ -1,0 +1,3 @@
+before 26/9:
+26/9 - 27/9: empower chord. passing chord (5). fix bug ==> ok
+28/9: fix UI. fix bug

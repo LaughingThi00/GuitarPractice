@@ -164,7 +164,7 @@ export function ChordProvider({ children }) {
       if (AddingChord) {
         if (
           !AllowRepeat &&
-          Queue.find((item) => item[0].split(" ")[0] === chord)
+          Queue.find((item) => refreshChordName(item[0], false, true) === chord)
         )
           return;
 
@@ -179,8 +179,8 @@ export function ChordProvider({ children }) {
   };
   const handleShowAll = (chord) => {
     if (!chord) return;
-    if (chord[0].includes("-")) chord[0] = chord[0].split("-")[1];
-    if (chord[0].includes(" ")) chord[0] = chord[0].split(" ")[0];
+
+    chord[0] = refreshChordName(chord[0]);
     setQueue((prev) => {
       const idx = prev.findIndex((mem) => mem[2] === chord[2]);
       prev = prev.filter((item) => item[2] !== chord[2]);
@@ -195,7 +195,7 @@ export function ChordProvider({ children }) {
   const addDegreeToChord = (chord) => {
     if (Content === ContentType.HarmonyBased && toneOption) {
       toneOption.value.forEach((item, index) => {
-        if (item === chord[0].split(" ")[0]) {
+        if (item === refreshChordName(chord[0], false, true)) {
           chord[0] = `${String(romanize(index + 1))}-${chord[0]}`;
         }
       });
@@ -241,7 +241,7 @@ export function ChordProvider({ children }) {
         if (AllowRepeat) setQueue((prev) => [...prev, ...res]);
         else setQueue(res);
       } else {
-        ringOption.value.split("").forEach((degree) => {
+        ringOption.value.forEach((degree) => {
           degree = Number(degree);
           toneOption.value.forEach((chord, index) => {
             if (index + 1 === degree)
