@@ -31,15 +31,16 @@ COMING:
     Logo-favicon-slogan =====> ok
     ngon ngu Viet-Anh =====> ok
     lam footer  =====> ok
+    deploy =>ok
 
     beardcumd giam chu =====> chua can
     toast thong bao  =====> chua can
 
-    deploy 
 
+    wellcomepage
+    footer VNUS
     basic va advanced chordring
     chordring ngoai
     save
     testcase full
     cai gio luyen tap
-
