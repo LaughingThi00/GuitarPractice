@@ -1,18 +1,47 @@
+:root {
+  --pointer: #b1478d;
+}
+
 .CeateChordImage {
   background-color: brown;
   height: auto;
   margin: 10px;
 }
 
-.Chord-Unit {
-  position: relative;
+.ChordPage {
+  display: flex;
+  flex-direction: row;
+  background-attachment: scroll;
+  justify-content: center;
+}
+.SettingPart-ChordPage {
+  width: 15%;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
-.Chord-QueueScreen {
-  background-color: aquamarine;
-  overflow-y: scroll;
+.ChordPart-ChordPage {
+  display: block;
+  width: 60%;
+  height: max-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-
+.ListPart-ChordPage {
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0.7rem;
+}
+.SettingPart-ChordPage *,
+.ChordPart-ChordPage * {
+  font-weight: bold;
+}
 .Chord-QueueList {
   list-style-type: none;
   display: flex;
@@ -20,15 +49,18 @@
   align-items: center;
   flex-direction: row;
   flex-wrap: wrap;
+  overflow-y: hidden;
+  margin: 0;
 }
-
-.Chord-ImageBox {
-  background-color: #9bdaeb;
-  display: block;
-}
-
 .MyChord-Container {
-  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 70vh;
+  height: 100%;
+  width: 100%;
+  background: #f2f1e7;
+  margin: auto 20px;
 }
 
 .ChordItem {
@@ -37,6 +69,7 @@
   align-items: center;
   transition: background-color 0.3s ease, border-color 0.3s ease;
   width: 80%;
+  min-height: 100%;
 
   box-sizing: border-box;
   padding: 0.2rem 0.4rem;
@@ -47,8 +80,8 @@
   text-align: center;
 
   border-radius: 0.25rem;
-  border-right:  1.5px solid rgb(43, 42, 42);
-  border-bottom:  1.5px solid rgb(43, 42, 42);
+  border-right: 1.5px solid rgb(43, 42, 42);
+  border-bottom: 1.5px solid rgb(43, 42, 42);
   box-shadow: 0rem 0.4rem 0.8rem 0.2rem rgba(0, 0, 0, 0.5);
 
   cursor: pointer;
@@ -59,26 +92,85 @@
 }
 
 .ChordItemChosen {
-  background-color: #8fff07;
+  background: #ffebbc;
 }
 .ChordItemGroup {
   background-color: #ffc107;
 }
 
 .ChordItemShowing {
-  background-color: #3c7dd7;
+  background: #5da7ae;
 }
 
-h3 {
-  display: block;
-}
-
-.ChorDItemButton{
-  padding: 0.25rem; 
+.ChorDItemButton {
+  padding: 0.25rem;
   font-size: 1.25rem;
-  margin:2px; 
-  display: flex; 
-  align-items: center; 
-  justify-content: center; 
+  margin: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   height: 25%;
 }
+
+.SettingPart-settingButtonGroup {
+  min-height: 10vh;
+}
+
+.Chord-QueueList-Item {
+  height: auto;
+}
+.ListPart-ChordPage-Main {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem;
+  width: 100%;
+  overflow-y: hidden;
+  height: 100%;
+}
+
+.range-slider {
+  box-sizing: border-box;
+  appearance: none;
+  height: 0.5rem;
+  background: #e0e0e0;
+}
+
+.range-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 1rem;
+  height: 0.5rem;
+  background: var(--pointer);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.range-slider::-moz-range-thumb {
+  width: 1rem;
+  height: 0.5rem;
+  background: var(--pointer);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.range-slider::-webkit-slider-runnable-track {
+  background: linear-gradient(
+    to right,
+    var(--pointer) 0%,
+    var(--pointer) calc(var(--value) * 1%),
+    #e0e0e0 calc(var(--value) * 1%),
+    #e0e0e0 100%
+  );
+}
+
+.range-slider::-moz-range-track {
+  background: linear-gradient(
+    to right,
+    var(--pointer) 0%,
+    var(--pointer) calc(var(--value) * 1%),
+    #e0e0e0 calc(var(--value) * 1%),
+    #e0e0e0 100%
+  );
+}
+
+

@@ -2,8 +2,8 @@
 
 export enum ContentType {
   Custom = "Custom",
-  HarmonyBased = "Harmony-Based",
-  TonicBased = "Tonic-Based",
+  HarmonyBased = "HarmonyBased",
+  TonicBased = "TonicBased",
 }
 export enum ModeType {
   Single = "Single",

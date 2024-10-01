@@ -1,9 +1,46 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  overflow-y: scroll;
+  height: 100vh;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+html {
+  overflow: -moz-scrollbars-none;
+  -ms-overflow-style: none;
+  height: 100vh;
+}
+
+#root {
+  height: 100vh;
+}
+body::-webkit-scrollbar {
+  display: none;
+}
+
+svg {
+  max-width: 100%;
+  max-height: 100%;
+}
 
 .App {
   text-align: center;
+  width: 100%;
+  height: 100%;
 }
 
 .App-logo {
@@ -16,64 +53,7 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+::-webkit-scrollbar {
+  width: 0;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-svg {
-  max-width: 50%;
-  max-height: 40%;
-  /* border: #000000 2px solid; */
-}
-
-button {
-  padding: 10px;
-  margin: 5px;
-  font-size: 10em;
-  border: #282c34 solid 2px;
-  box-shadow: #282c34 1px 1px;
-  text-shadow: #282c34 1px 1px;
-}
-
-.header {
-  height: 150px;
-  background-color: #c5ccdc;
-}
-
-.header .header-text {
-  color: #40557f;
-  font-weight: bolder;
-  font-size: larger;
-  padding-top: 20px;
-}
-
-.header ul {
-  list-style-type: none;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-}
-
-.header ul li {
-  margin: 20px;
-  width: 130px;
-  padding: 10px 20px;
-  border: black solid 2px;
-  background-color: aqua;
-}
-
-.header a {
-  text-decoration: none;
-}

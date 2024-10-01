@@ -1,0 +1,125 @@
+.button-ListPart {
+  background-color: #ffffff;
+  box-shadow: 2px 2px 2px black;
+  border: 0;
+  border-radius: 0.5rem;
+  box-sizing: border-box;
+  color: #111827;
+  font-family: "Inter var", ui-sans-serif, system-ui, -apple-system, system-ui,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-size: 0.875rem;
+  font-weight: bold;
+  line-height: 1.25rem;
+  padding: 0.6rem 0.8rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  text-align: center;
+  text-decoration: none #d1d5db solid;
+  text-decoration-thickness: auto;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-ListPart:hover {
+  opacity: 0.8;
+}
+
+.button-ListPart:focus {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
+.button-ListPart:focus-visible {
+  box-shadow: none;
+}
+
+.button-Header {
+  align-items: center;
+  appearance: none;
+  background-color: #fff;
+  border: 1px solid #dbdbdb;
+  box-shadow: 1px 1px 1px black;
+  border-radius: 0.375em;
+  box-sizing: border-box;
+  color: #363636;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Helvetica,
+    Arial, sans-serif;
+  font-size: 1rem;
+  height: 2.5em;
+  justify-content: center;
+  line-height: 1.5;
+  padding: calc(0.5em - 1px) 1em;
+  position: relative;
+  text-align: center;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: top;
+  white-space: nowrap;
+}
+
+.button-Header:hover {
+  border-color: #b5b5b5;
+}
+
+.button-SettingPart {
+  background-color: #ffffff;
+  box-shadow: 2px 2px 2px black;
+  border: 0;
+  border-radius: 0.5rem;
+  box-sizing: border-box;
+  color: #111827;
+  font-family: "Inter var", ui-sans-serif, system-ui, -apple-system, system-ui,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-size: 0.875rem;
+  font-weight: bold;
+  line-height: 1.25rem;
+  padding: 0.6rem 0.8rem;
+  width: 80%;
+  height: 2.5rem;
+  text-align: center;
+  text-decoration: none #d1d5db solid;
+  text-decoration-thickness: auto;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-SettingPart:hover {
+  opacity: 0.8;
+}
+
+.button-SettingPart:focus {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
+.button-SettingPart:focus-visible {
+  box-shadow: none;
+}
+
+label {
+  box-shadow: inset 0px 5px 15px rgba(0, 0, 0, 0.4),
+    inset 0px -5px 15px rgba(255, 255, 255, 0.4);
+}
+
+label:active div {
+  width: 100px;
+}
+
+button {
+  padding: 10px;
+  margin: 5px;
+  font-size: 10em;
+  border: #282c34 solid 2px;
+  box-shadow: #282c34 1px 1px;
+  text-shadow: #282c34 0.3px 0.3px;
+}

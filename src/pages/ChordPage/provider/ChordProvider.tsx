@@ -1,4 +1,10 @@
-import React, { createContext, useEffect, useRef, useState } from "react";
+import React, {
+  createContext,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import ListJSON from "../../../resource/chord/chordlibrary.json";
 import {
   addTimestamp,
@@ -22,6 +28,8 @@ import {
   replaceArrInQueue,
   replaceChordInQueue,
 } from "./../utils/utils";
+import { Theme } from "../types/themes";
+import { GlobalContext } from "../../../provider/globalProvider";
 
 export const List = Object.entries(ListJSON);
 export const ChordPageContext = createContext(null);
@@ -39,7 +47,7 @@ export function ChordProvider({ children }) {
       return a.value.localeCompare(b.value);
     }
   );
-
+  const { theme } = useContext(GlobalContext);
   const [HideForm, setHideForm] = useState(false);
   const handleHideForm = () => {
     setHideForm(!HideForm);
@@ -76,34 +84,57 @@ export function ChordProvider({ children }) {
   const handleShowMenu = () => {
     setShowMenu(!ShowMenu);
   };
+
   const [Mode, setMode] = useState(ModeType.Single);
-  const handleChangeMode = () => {
-    if (Mode === ModeType.Single) {
-      setMode(ModeType.Multiple);
+  const handleChangeMode = (isUnchanged = false) => {
+    if (!isUnchanged) {
+      if (Mode === ModeType.Single) {
+        setMode(ModeType.Multiple);
 
-      Interval.current = setInterval(() => {
-        if (!NowChordRef.current) {
-          setNowChord(Queue[0]);
-        } else {
-          let idx = Queue.findIndex(
-            (item) => item[2] === NowChordRef.current[2]
-          );
-
-          if (idx === -1 || idx === Queue.length - 1) {
+        Interval.current = setInterval(() => {
+          if (!NowChordRef.current) {
             setNowChord(Queue[0]);
           } else {
-            setNowChord(Queue[idx + 1]);
+            let idx = Queue.findIndex(
+              (item) => item[2] === NowChordRef.current[2]
+            );
+
+            if (idx === -1 || idx === Queue.length - 1) {
+              setNowChord(Queue[0]);
+            } else {
+              setNowChord(Queue[idx + 1]);
+            }
           }
-        }
-      }, IntervalChord);
+        }, IntervalChord);
+      } else {
+        setMode(ModeType.Single);
+        clearInterval(Interval.current);
+      }
     } else {
-      setMode(ModeType.Single);
-      clearInterval(Interval.current);
+      if (Mode === ModeType.Multiple) {
+        clearInterval(Interval.current);
+        Interval.current = setInterval(() => {
+          if (!NowChordRef.current) {
+            setNowChord(Queue[0]);
+          } else {
+            let idx = Queue.findIndex(
+              (item) => item[2] === NowChordRef.current[2]
+            );
+
+            if (idx === -1 || idx === Queue.length - 1) {
+              setNowChord(Queue[0]);
+            } else {
+              setNowChord(Queue[idx + 1]);
+            }
+          }
+        }, IntervalChord);
+      }
     }
   };
   const [Queue, setQueue] = useState([]);
   const handleClearQueue = () => {
     setQueue([]);
+    setNowChord(null);
   };
   const [ringOption, setRingOption] = useState(null);
   const handleChangeRingOption = (val) => {
@@ -118,20 +149,30 @@ export function ChordProvider({ children }) {
 
   const handleSliderIntervalChordChange = (event) => {
     setIntervalChord(event.target.value);
-    clearInterval(Interval.current);
-    Interval.current = setInterval(() => {
-      if (!NowChordRef.current) {
-        setNowChord(Queue[0]);
-      } else {
-        let idx = Queue.findIndex((item) => item[0] === NowChordRef.current[0]);
+    event.target.style.setProperty("--value", event.target.value / 200);
+    document.documentElement.style.setProperty(
+      "--pointer",
+      Theme[theme].ChordPage.SettingPart.Slider.Pointer
+    );
 
-        if (idx === -1 || idx === Queue.length - 1) {
+    if (Mode === ModeType.Multiple) {
+      clearInterval(Interval.current);
+      Interval.current = setInterval(() => {
+        if (!NowChordRef.current) {
           setNowChord(Queue[0]);
         } else {
-          setNowChord(Queue[idx + 1]);
+          let idx = Queue.findIndex(
+            (item) => item[0] === NowChordRef.current[0]
+          );
+
+          if (idx === -1 || idx === Queue.length - 1) {
+            setNowChord(Queue[0]);
+          } else {
+            setNowChord(Queue[idx + 1]);
+          }
         }
-      }
-    }, event.target.value);
+      }, event.target.value);
+    }
   };
   const [toneOption, setToneOption] = useState(null);
   const handleChangeToneOption = (val) => {
@@ -175,12 +216,15 @@ export function ChordProvider({ children }) {
   };
   const handleDelete = (chord) => {
     if (!chord) return;
-    setQueue(Queue.filter((item) => item[2] !== chord[2]));
+    const resQueue = Queue.filter((item) => item[2] !== chord[2]);
+    setQueue(resQueue);
+    setNowChord(resQueue[0]);
   };
   const handleShowAll = (chord) => {
     if (!chord) return;
 
     chord[0] = refreshChordName(chord[0]);
+    let NewNowChord = null;
     setQueue((prev) => {
       const idx = prev.findIndex((mem) => mem[2] === chord[2]);
       prev = prev.filter((item) => item[2] !== chord[2]);
@@ -189,8 +233,10 @@ export function ChordProvider({ children }) {
       );
       if (!AllowRepeat)
         group = group.filter((item) => !Queue.find((x) => x[0] === item[0]));
+      NewNowChord = group.length ? group[0] : null;
       return [...prev.slice(0, idx), ...group, ...prev.slice(idx)];
     });
+    if (NewNowChord) setNowChord(NewNowChord);
   };
   const addDegreeToChord = (chord) => {
     if (Content === ContentType.HarmonyBased && toneOption) {
@@ -241,7 +287,7 @@ export function ChordProvider({ children }) {
         if (AllowRepeat) setQueue((prev) => [...prev, ...res]);
         else setQueue(res);
       } else {
-        ringOption.value.forEach((degree) => {
+        ringOption.value.split("").forEach((degree) => {
           degree = Number(degree);
           toneOption.value.forEach((chord, index) => {
             if (index + 1 === degree)
@@ -428,6 +474,10 @@ export function ChordProvider({ children }) {
 
     setQueue(newItems);
   };
+
+  useEffect(() => {
+    handleChangeMode(true);
+  }, [Queue]);
   return (
     <ChordPageContext.Provider
       value={{

@@ -94,8 +94,10 @@ export const refreshChordName = (
   return result;
 };
 
-export const findDegree = (chordName) => {
-  return chordName.includes("-") ? deromanize(chordName.split("-")[0]) : 0;
+export const findDegree = (chordName, returnNum = true) => {
+  if (returnNum)
+    return chordName.includes("-") ? deromanize(chordName.split("-")[0]) : 0;
+  else return chordName.includes("-") ? chordName.split("-")[0] : undefined;
 };
 
 export const findForm = (chordName) => {

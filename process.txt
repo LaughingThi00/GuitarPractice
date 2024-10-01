@@ -1,3 +1,45 @@
 before 26/9:
 26/9 - 27/9: empower chord. passing chord (5). fix bug ==> ok
-28/9: fix UI. fix bug
+28/9: 
+    -fix UI 
+    -fix bug (split)
+    -start to prac
+29/9: passing chord (251). fix UI. fix bug
+
+COMING:
+    -Full UI: ColorPalette, component, responsive
+    -Deploy
+    -Prac Note Remember (oolimo)
+    -Storage (for save)
+    -Backend (user, storage)
+    -Pentatonic (?)
+    -More sound
+    -(Quiz) 
+    -Doc: all theory
+    -Test 
+
+30/9-1/10:
+
+    Lam container nowchord co dinh====>ok
+    clear || xoa item la nowchord => set nowchord = null. show all form la set nowchord lien =====> ok
+    mode multiple: xoa la mat nowchord lien. them hop am vao la cap nhat lien =====>ok
+    thanh slider interval xau vl =====> ok
+    thay bo cuc cac button =====> ok
+    Thay bo mau button  =====> ok
+    Set bien mau css global =====> ok
+    Lam tab header dep hon =====> ok
+    Logo-favicon-slogan =====> ok
+    ngon ngu Viet-Anh =====> ok
+    lam footer  =====> ok
+
+    beardcumd giam chu =====> chua can
+    toast thong bao  =====> chua can
+
+    deploy 
+
+    basic va advanced chordring
+    chordring ngoai
+    save
+    testcase full
+    cai gio luyen tap
+

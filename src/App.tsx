@@ -1,16 +1,15 @@
-import { Outlet } from "react-router-dom";
 import "./css/App.css";
 import "./css/Chord.css";
-
-import Header from "./pages/outline/Header";
+import "./css/Button.css"
 import React from "react";
+import GlobalProvider from "./provider/globalProvider";
+import Web from "./Web";
 
 const App: React.FC = () => {
   return (
-    <div className="App">
-      <Header />
-      <Outlet />
-    </div>
+    <GlobalProvider>
+      <Web />
+    </GlobalProvider>
   );
 };
 

@@ -1,0 +1,95 @@
+.Dark-Button-On {
+  background-color: rgb(19 78 74) !important;
+  color: #fff;
+}
+
+.Dark-Button-Off {
+  background-color: #9e9e9e !important;
+  color: #fff;
+}
+
+.Dark-Background {
+  background: #697565;
+}
+
+.Dark-ChordPage-ListPart {
+  background-color: #50727b;
+}
+
+
+.Light-Button-On {
+  background-color: #6ef83b !important;
+  color: #fff;
+}
+
+.Light-Button-Off {
+  background-color: #ffacac !important;
+  color: #000000;
+}
+.Dark-Header,
+.Dark-Footer {
+  background: linear-gradient(
+    to left,
+    rgba(30, 30, 30, 0.5),
+    rgba(30, 30, 30, 0.8)
+  );
+  color: #e0f2fe;
+}
+.Light-Header,
+.Light-Footer {
+  background: linear-gradient(
+    to right,
+    rgb(231, 147, 21, 0.9),
+    rgba(231, 147, 21, 0.75)
+  );
+  color: #fff;
+}
+.Light-Background {
+  background: #faf6ed;
+}
+
+.Light-ChordPage-ListPart {
+  background-color: #c9fdd7;
+}
+
+.Light-ChordPage-SettingPart-ChordItem-showing {
+  background: #f8f398;
+}
+.Light-ChordPage-SettingPart-ChordItem-chosen {
+  background: #ccd51a;
+}
+
+.Dark-ChordPage-SettingPart-ChordItem-showing {
+  background: #ffebbc;
+}
+.Dark-ChordPage-SettingPart-ChordItem-chosen {
+  background: #5da7ae;
+}
+
+.Dark-Logo {
+  color: #065041 !important;
+}
+.Light-Logo {
+  color: #ffffff !important;
+}
+
+.Dark-ColorPath-First {
+  background-color: #586e72;
+}
+.Dark-ColorPath-Second {
+  background-color: #305c5c;
+}
+.Dark-ColorPath-Third {
+  background-color: #5c835a;
+}
+
+.Light-ColorPath-First {
+  background-color: #ccd51a;
+}
+.Light-ColorPath-Second {
+  background-color: #6b76ff;
+}
+.Light-ColorPath-Third {
+  background-color: #ff62a5;
+}
+

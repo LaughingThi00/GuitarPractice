@@ -6,14 +6,23 @@ import {
   fa7,
   faAnglesRight,
   faBolt,
+  faBridge,
   faBroom,
   faGear,
+  faPersonWalkingArrowRight,
   faPlus,
+  faSave,
+  faShapes,
+  faStairs,
   faTrash,
 } from "@fortawesome/free-solid-svg-icons";
 import Select from "react-select";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { ContentType } from "../types/types";
+import { GlobalContext } from "../../../provider/globalProvider";
+import { Theme } from "../types/themes";
+import { findDegree, findForm, refreshChordName } from "../utils/utils";
+import { lang } from "../types/language";
 
 const ListPart = () => {
   const {
@@ -34,161 +43,250 @@ const ListPart = () => {
     handleOnDragEnd,
     ChordList,
     empowerOneChord,
-    findFifth
+    findFifth,
+    handleHideForm,
+    handleHideDegree,
   } = useContext(ChordPageContext);
+  const { theme, language } = useContext(GlobalContext);
   return (
-    <div className="w-1/6 Chord-QueueScreen flex flex-column justify-start items-center p-2 ">
-      <div className="Chord-QueueList bg-blue-200">
-        <Select
-          options={ChordList}
-          placeholder="Choose a chord"
-          onChange={handleAdd}
-          className="m-2 w-full"
-        />
-
-        <Button onClick={() => handleShowMenu()} variant="light">
-          <FontAwesomeIcon icon={faGear} />{" "}
-        </Button>
-        <Button onClick={() => handleClearQueue()} variant="light">
-          <FontAwesomeIcon icon={faBroom} />{" "}
-        </Button>
-
-        <DragDropContext onDragEnd={handleOnDragEnd}>
-          <Droppable droppableId="playlist">
-            {(provided) => (
-              <ul
-                className=" w-4/5"
-                {...provided.droppableProps}
-                ref={provided.innerRef}
-              >
-                {Queue &&
-                  Queue.map((item, index) => {
-                    const nameChord = addDegreeToChord(item)[0];
-                    return (
-                      <Draggable
-                        key={item[2]}
-                        draggableId={item[2]}
-                        index={index}
-                      >
-                        {(provided) => (
-                          <li
-                            ref={provided.innerRef}
-                            {...provided.draggableProps}
-                            {...provided.dragHandleProps}
-                            style={{
-                              ...provided.draggableProps.style,
-                            }}
-                            className="Chord-QueueList-Item flex flex-row"
-                            key={item[2]}
-                          >
-                            <div
-                              className={
-                                NowChord && item[2] === NowChord[2]
-                                  ? "ChordItem ChordItemShowing"
-                                  : Queue.filter(
-                                      (itm) =>
-                                        itm[0].split(" ")[0] ===
-                                        item[0].split(" ")[0]
-                                    ).length >= 1 && item[0].includes("[")
-                                  ? "ChordItem ChordItemChosen "
-                                  : "ChordItem ChordItemGroup"
-                              }
-                              onClick={() => {
-                                setNowChord(item);
-                              }}
-                            >
-                              {nameChord.includes("-") ? (
-                                <div className="flex flex-column">
-                                  {!HideDegree && (
-                                    <h3 className="text-xs text-red-500">
-                                      {" "}
-                                      {nameChord.split("-")[0]}
-                                    </h3>
-                                  )}
-                                  <h3 className="text-2xl">
-                                    {" "}
-                                    {nameChord.split("-")[1].split(" ")[0]}
-                                  </h3>
-                                  {!HideForm &&
-                                    nameChord.split(" ").length > 1 && (
-                                      <h3 className="text-neutral-500">
-                                        {nameChord.split("-")[1].split(" ")[1]}
-                                      </h3>
-                                    )}
-                                </div>
-                              ) : (
-                                <div className="flex flex-column">
-                                  <h3 className="text-2xl">
-                                    {" "}
-                                    {nameChord.split(" ")[0]}
-                                  </h3>
-                                  {!HideForm &&
-                                    nameChord.split(" ").length > 1 && (
-                                      <h3 className="text-neutral-500">
-                                        {nameChord.split(" ")[1]}
-                                      </h3>
-                                    )}
-                                </div>
-                              )}
-                            </div>
-                            {ShowMenu && (
-                              <div className="Chord-Menu flex flex-column flex-wrap	justify-center">
-                                <Button
-                                  variant="info"
-                                  className="ChorDItemButton"
-                                  onClick={() => handleChangeChordForm(item)}
-                                >
-                                  <FontAwesomeIcon icon={faAnglesRight} />{" "}
-                                </Button>
-                                {Content === ContentType.HarmonyBased ? (
-                                  <>
-                                    <Button
-                                      variant="warning"
-                                      className="ChorDItemButton"
-                                      onClick={() =>
-                                        empowerOneChord(addDegreeToChord(item))
-                                      }
-                                    >
-                                      <FontAwesomeIcon icon={faBolt} />{" "}
-                                    </Button>
-                                    <Button
-                                      variant="light"
-                                      className="ChorDItemButton"
-                                      onClick={() =>
-                                        findFifth(addDegreeToChord(item))
-                                      }
-                                    >
-                                      <FontAwesomeIcon icon={fa7} className="text-sm"/>
-                                    </Button>
-                                  </>
-                                ) : (
-                                  <Button
-                                    variant="light"
-                                    className="ChorDItemButton"
-                                    onClick={() => handleShowAll(item)}
-                                  >
-                                    <FontAwesomeIcon icon={faPlus} />{" "}
-                                  </Button>
-                                )}
-                                <Button
-                                  onClick={() => handleDelete(item)}
-                                  variant="danger"
-                                  className="ChorDItemButton"
-                                >
-                                  <FontAwesomeIcon icon={faTrash} />{" "}
-                                </Button>
-                              </div>
-                            )}
-                          </li>
-                        )}
-                      </Draggable>
-                    );
-                  })}
-                {provided.placeholder}
-              </ul>
+    <div className="ListPart-ChordPage">
+      <div className={`ListPart-ChordPage-Main  ${theme}-ChordPage-ListPart`}>
+        <div className="w-full flex flex-column">
+          <div className="m-1  SettingPart-settingButtonGroup">
+            <button
+              className="button-ListPart"
+              onClick={() => handleShowMenu()}
+              role="button"
+            >
+              <FontAwesomeIcon icon={faGear} />{" "}
+            </button>
+            {ShowMenu && (
+              <>
+                {" "}
+                <button className="button-ListPart" role="button">
+                  <FontAwesomeIcon icon={faSave} />{" "}
+                </button>
+                <button
+                  onClick={handleHideForm}
+                  role="button"
+                  className={`button-ListPart
+                      ${
+                        !HideForm ? `${theme}-Button-On` : `${theme}-Button-Off`
+                      }
+                    `}
+                >
+                  <FontAwesomeIcon icon={faShapes} />{" "}
+                </button>
+                {Content === ContentType.HarmonyBased && (
+                  <button
+                    onClick={handleHideDegree}
+                    role="button"
+                    className={`button-ListPart
+                      ${
+                        !HideDegree
+                          ? `${theme}-Button-On`
+                          : `${theme}-Button-Off`
+                      }
+                    `}
+                  >
+                    <FontAwesomeIcon icon={faStairs} />
+                  </button>
+                )}
+                <button
+                  className="button-ListPart"
+                  onClick={() => handleClearQueue()}
+                  role="button"
+                >
+                  <FontAwesomeIcon icon={faBroom} />{" "}
+                </button>
+              </>
             )}
-          </Droppable>
-        </DragDropContext>
+          </div>{" "}
+          <Select
+            options={ChordList}
+            placeholder={lang[language].ListPart.PlaceHolder.chooseChord}
+            onChange={handleAdd}
+            className="w-full mb-1 font-bold"
+            styles={{
+              control: (provided, state) => ({
+                ...provided,
+                backgroundColor:
+                  Theme[theme].ChordPage.ListPart.ChordSelect.mainColor,
+                borderColor: state.isFocused
+                  ? Theme[theme].ChordPage.ListPart.ChordSelect.mainColor
+                  : Theme[theme].ChordPage.ListPart.ChordSelect.mainColor,
+                "&:hover": {
+                  opacity: "0.8",
+                },
+                outline: "none",
+                boxShadow: state.isFocused
+                  ? `0 0 5px ${Theme[theme].ChordPage.ListPart.ChordSelect.secondColor}`
+                  : "none",
+              }),
+              option: (provided, state) => ({
+                ...provided,
+                backgroundColor: state.isSelected
+                  ? Theme[theme].ChordPage.ListPart.ChordSelect.mainColor
+                  : Theme[theme].ChordPage.ListPart.ChordSelect.secondColor,
+                "&:hover": {
+                  backgroundColor: state.isSelected
+                    ? Theme[theme].ChordPage.ListPart.ChordSelect.mainColor
+                    : Theme[theme].ChordPage.ListPart.ChordSelect.secondColor,
+                  opacity: "0.8",
+                },
+              }),
+              menu: (provided) => ({
+                ...provided,
+                backgroundColor:
+                  Theme[theme].ChordPage.ListPart.ChordSelect.mainColor,
+              }),
+              placeholder: (provided) => ({
+                ...provided,
+                color: "gray",
+                fontWeight: "normal",
+              }),
+            }}
+          />
+        </div>
+        <div className=" w-full h-full overflow-y-scroll">
+          <div className="Chord-QueueList">
+            <DragDropContext onDragEnd={handleOnDragEnd}>
+              <Droppable droppableId="playlist">
+                {(provided) => (
+                  <ul
+                    className=" w-4/5 pb-3 pt-1"
+                    {...provided.droppableProps}
+                    ref={provided.innerRef}
+                  >
+                    {Queue &&
+                      Queue.map((item, index) => {
+                        const nameChord = addDegreeToChord(item)[0];
+                        return (
+                          <Draggable
+                            key={item[2]}
+                            draggableId={item[2]}
+                            index={index}
+                          >
+                            {(provided) => (
+                              <li
+                                ref={provided.innerRef}
+                                {...provided.draggableProps}
+                                {...provided.dragHandleProps}
+                                style={{
+                                  ...provided.draggableProps.style,
+                                }}
+                                className="Chord-QueueList-Item min-h-max flex flex-row justify-center items-stretch my-0.5 w-4/5"
+                                key={item[2]}
+                              >
+                                <div
+                                  className={`ChordItem ${theme}-ChordPage-SettingPart-ChordItem-${
+                                    NowChord && item[2] === NowChord[2]
+                                      ? "chosen"
+                                      : "showing"
+                                  }`}
+                                  onClick={() => {
+                                    setNowChord(item);
+                                  }}
+                                >
+                                  {nameChord.includes("-") ? (
+                                    <div className="flex flex-column">
+                                      {!HideDegree && (
+                                        <h3 className="text-xs text-red-500">
+                                          {" "}
+                                          {findDegree(nameChord, false)}
+                                        </h3>
+                                      )}
+                                      <h3 className="text-2xl">
+                                        {" "}
+                                        {refreshChordName(nameChord)}
+                                      </h3>
+                                      {!HideForm && (
+                                        <h3 className="text-neutral-500">
+                                          {findForm(nameChord)}
+                                        </h3>
+                                      )}
+                                    </div>
+                                  ) : (
+                                    <div className="flex flex-column">
+                                      <h3 className="text-2xl">
+                                        {" "}
+                                        {refreshChordName(nameChord)}
+                                      </h3>
+                                      {!HideForm && (
+                                        <h3 className="text-neutral-500">
+                                          {findForm(nameChord)}
+                                        </h3>
+                                      )}
+                                    </div>
+                                  )}
+                                </div>
+                                {ShowMenu && (
+                                  <div className="Chord-Menu flex flex-column flex-wrap	justify-center place-content-around">
+                                    <Button
+                                      variant="info"
+                                      className="ChorDItemButton"
+                                      onClick={() =>
+                                        handleChangeChordForm(item)
+                                      }
+                                    >
+                                      <FontAwesomeIcon icon={faAnglesRight} />{" "}
+                                    </Button>
+                                    {Content === ContentType.HarmonyBased ? (
+                                      <>
+                                        <Button
+                                          variant="warning"
+                                          className="ChorDItemButton"
+                                          onClick={() =>
+                                            empowerOneChord(
+                                              addDegreeToChord(item)
+                                            )
+                                          }
+                                        >
+                                          <FontAwesomeIcon icon={faBolt} />{" "}
+                                        </Button>
+                                        {findDegree(item[0]) !== 0 && (
+                                          <Button
+                                            variant="light"
+                                            className="ChorDItemButton"
+                                            onClick={() => findFifth(item)}
+                                          >
+                                            <FontAwesomeIcon
+                                              icon={faBridge}
+                                              className="text-sm"
+                                            />
+                                          </Button>
+                                        )}
+                                      </>
+                                    ) : (
+                                      <Button
+                                        variant="light"
+                                        className="ChorDItemButton"
+                                        onClick={() => handleShowAll(item)}
+                                      >
+                                        <FontAwesomeIcon icon={faPlus} />{" "}
+                                      </Button>
+                                    )}
+                                    <Button
+                                      onClick={() => handleDelete(item)}
+                                      variant="danger"
+                                      className="ChorDItemButton"
+                                    >
+                                      <FontAwesomeIcon icon={faTrash} />{" "}
+                                    </Button>
+                                  </div>
+                                )}
+                              </li>
+                            )}
+                          </Draggable>
+                        );
+                      })}
+                    {provided.placeholder}
+                  </ul>
+                )}
+              </Droppable>
+            </DragDropContext>
+          </div>
+        </div>
       </div>
     </div>
   );

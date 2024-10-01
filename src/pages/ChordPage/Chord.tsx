@@ -3,12 +3,13 @@ import ListPart from "./components/ListPart";
 import SettingPart from "./components/SettingPart";
 import { ChordProvider } from "./provider/ChordProvider";
 
-
-
 const ChordPage = () => {
   return (
     <ChordProvider>
-      <div className="flex flex-row min-h-screen max-h-screen	 justify-center ">
+      <div
+        className=" ChordPage"
+        style={{ paddingTop: "10vh", height: "100%" }}
+      >
         <SettingPart />
         <ChordPart />
         <ListPart />

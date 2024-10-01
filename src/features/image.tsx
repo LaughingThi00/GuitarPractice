@@ -29,7 +29,6 @@ export const createGroupFromOneChord = (chord) => {
     group.push(addTimestamp(AddingChord));
   });
 
-
   group = quickSortChordGroup(group);
   count = 0;
   group.forEach((item) => {
@@ -141,7 +140,7 @@ export const MyChord = ({ fret, finger }) => {
       standard: ["E", "A", "D", "G", "B", "E"],
     },
   };
-  const lite = false; 
+  const lite = false;
   return <Chord chord={chord} instrument={instrument} lite={lite} />;
 };
 
@@ -156,9 +155,7 @@ export function createChordImage(chord, baby, showName) {
           <span className="ml-2 text-2xl inline font-bold text-neutral-500 absolute">
             {findForm(chord[0])}
           </span>
-          {/* <span className=" top-10 text-xl inline font-bold text-red-500 absolute">
-            [{romanize(findDegree(chord[0]))}]
-          </span> */}
+  
         </span>
       </>
     ) : (
@@ -166,13 +163,15 @@ export function createChordImage(chord, baby, showName) {
     );
   }
   return (
-    <div className="MyChord-Container flex flex-column justify-center ">
-      {showName && name}
-      <div className="Chord-Unit flex flex-row justify-center items-center relative">
-        <div className=" absolute bottom-0 left-1/4 h-3/4 text-xl">
+    <div className="MyChord-Container">
+      <span>{showName && name}</span>
+      <div className="relative flex flex-row justify-center items-center">
+        <div className=" absolute left-1/4 top-1/4 h-3/4 text-2xl">
           [{findCapo(data.fret) + 1}fr]{" "}
         </div>
-        <MyChord fret={data.fret} finger={data.finger} />
+        <div className="flex flex-row justify-center items-center w-1/2 h-1/2 ">
+          <MyChord fret={data.fret} finger={data.finger} />
+        </div>
       </div>
     </div>
   );
