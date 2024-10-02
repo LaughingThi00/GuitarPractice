@@ -259,9 +259,8 @@ export function ChordProvider({ children }) {
     if (!AllowRepeat) setQueue([]);
     let res = [];
     if (Content === ContentType.TonicBased) {
-      if (!tonicOption) {
-        return;
-      } else {
+      if (!tonicOption) return;
+      else {
         let chords = optionChordSet.find(
           (chords) => chords.name === tonicOption.value
         );

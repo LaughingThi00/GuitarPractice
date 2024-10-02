@@ -56,7 +56,7 @@ export const optionsNote = [
 
 export const optionsTonicBased = [
   { value: TonicType.Basic, label: TonicType.Basic },
-  { value: TonicType.BasicPassing, label: TonicType.BasicPassing },
+  { value: TonicType.BasicPassing, label: "BasicPassing" },
   { value: TonicType.Full, label: TonicType.Full },
 ];
 export const optionsHarmonyBased = [

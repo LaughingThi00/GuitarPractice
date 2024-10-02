@@ -172,7 +172,7 @@ const SettingPart = () => {
                         lang[language].SettingPart.TonicTypeOption[
                           Object.keys(
                             lang[language].SettingPart.TonicTypeOption
-                          ).find((k) => k === item.value)
+                          ).find((k) => k === item.label)
                         ],
                     }))
                   : optionsHarmonyBased.map((item) => ({
@@ -197,8 +197,19 @@ const SettingPart = () => {
               className="w-4/5 m-1"
             />
             <button
+              disabled={
+                !(Content === ContentType.HarmonyBased && toneOption) &&
+                !(
+                  Content === ContentType.TonicBased &&
+                  noteOption &&
+                  tonicOption
+                )
+              }
               className={`button-ListPart mt-3 ${
-                toneOption || (noteOption && tonicOption)
+                (Content === ContentType.HarmonyBased && toneOption) ||
+                (Content === ContentType.TonicBased &&
+                  noteOption &&
+                  tonicOption)
                   ? Theme[theme].Button.On
                   : Theme[theme].Button.Off
               }`}

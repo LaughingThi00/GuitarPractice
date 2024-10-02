@@ -45,3 +45,4 @@ COMING:
     save
     testcase full
     cai gio luyen tap
+    responsive
