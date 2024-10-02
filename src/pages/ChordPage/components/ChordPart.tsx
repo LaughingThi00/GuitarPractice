@@ -8,12 +8,10 @@ const ChordPart = () => {
   const { NowChord } = useContext(ChordPageContext);
   return (
     <div className="ChordPart-ChordPage">
-      {NowChord ? (
-        createChordImage(NowChord, true, true)
-      ) : (
-        <div className="MyChord-Container "></div>
-      )}
-      <RisingBeat />
+      <div className="MyChord-Container ">
+        {NowChord ? createChordImage(NowChord, true, true) : <div></div>}
+        <RisingBeat />{" "}
+      </div>
     </div>
   );
 };

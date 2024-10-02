@@ -16,7 +16,6 @@
   background-color: #50727b;
 }
 
-
 .Light-Button-On {
   background-color: #6ef83b !important;
   color: #fff;
@@ -38,9 +37,9 @@
 .Light-Header,
 .Light-Footer {
   background: linear-gradient(
-    to right,
-    rgb(231, 147, 21, 0.9),
-    rgba(231, 147, 21, 0.75)
+    to left,
+    rgba(231, 147, 21, 0.7),
+    rgba(231, 147, 21, 0.85)
   );
   color: #fff;
 }
@@ -92,4 +91,3 @@
 .Light-ColorPath-Third {
   background-color: #ff62a5;
 }
-

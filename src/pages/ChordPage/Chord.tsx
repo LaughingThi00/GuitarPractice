@@ -8,7 +8,7 @@ const ChordPage = () => {
     <ChordProvider>
       <div
         className=" ChordPage"
-        style={{ paddingTop: "10vh", height: "100%" }}
+        style={{ paddingTop: "12vh", height: "100%" }}
       >
         <SettingPart />
         <ChordPart />

@@ -175,7 +175,7 @@ const ListPart = () => {
                                 style={{
                                   ...provided.draggableProps.style,
                                 }}
-                                className="Chord-QueueList-Item min-h-max flex flex-row justify-center items-stretch my-0.5 w-4/5"
+                                className="Chord-QueueList-Item"
                                 key={item[2]}
                               >
                                 <div
@@ -221,7 +221,7 @@ const ListPart = () => {
                                   )}
                                 </div>
                                 {ShowMenu && (
-                                  <div className="Chord-Menu flex flex-column flex-wrap	justify-center place-content-around">
+                                  <div className="Chord-Menu">
                                     <Button
                                       variant="info"
                                       className="ChorDItemButton"

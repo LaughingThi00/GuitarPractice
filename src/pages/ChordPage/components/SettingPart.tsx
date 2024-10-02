@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useLayoutEffect, useState } from "react";
+import React, { useContext, useLayoutEffect } from "react";
 import { ChordPageContext } from "./../provider/ChordProvider";
 import { ContentType, ModeType } from "../types/types";
 import Select from "react-select";
@@ -9,14 +9,8 @@ import {
   optionsTone,
   optionsTonicBased,
 } from "../options/options";
-import { Button, Form } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faArrowsToDot,
-  faClock,
-  faShapes,
-  faStairs,
-} from "@fortawesome/free-solid-svg-icons";
+import { faArrowsToDot, faClock } from "@fortawesome/free-solid-svg-icons";
 import { Theme } from "../types/themes";
 import { GlobalContext } from "../../../provider/globalProvider";
 import { lang } from "../types/language";

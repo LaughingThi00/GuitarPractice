@@ -149,21 +149,20 @@ export function createChordImage(chord, baby, showName) {
   let name = null;
   if (showName) {
     name = chord[0].includes(" ") ? (
-      <>
+      <div>
         <span className="m-0 text-4xl inline font-bold relative">
           <span>{refreshChordName(chord[0])} </span>
           <span className="ml-2 text-2xl inline font-bold text-neutral-500 absolute">
             {findForm(chord[0])}
           </span>
-  
         </span>
-      </>
+      </div>
     ) : (
       <span className="m-0 text-4xl font-bold">{chord[0]}</span>
     );
   }
   return (
-    <div className="MyChord-Container">
+    <div>
       <span>{showName && name}</span>
       <div className="relative flex flex-row justify-center items-center">
         <div className=" absolute left-1/4 top-1/4 h-3/4 text-2xl">

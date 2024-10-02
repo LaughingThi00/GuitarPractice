@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import "./../../css/Header.css";
 import "./../../css/Theme.css";
 import { Theme } from "../ChordPage/types/themes";
@@ -18,19 +18,20 @@ const Header = () => {
   const handleScroll = () => {
     const scrollTop = window.scrollY;
     if (scrollTop > lastScrollTop) {
-      setShowHeader(false); 
+      setShowHeader(false);
     } else {
       setShowHeader(true);
     }
-    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; 
+    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
   };
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
     return () => {
-      window.removeEventListener("scroll", handleScroll); 
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+  const navigate = useNavigate();
 
   return (
     <header
@@ -40,7 +41,14 @@ const Header = () => {
         showHeader ? "translate-y-0" : "-translate-y-full"
       }`}
     >
-      <div className={`logo ${theme}-Logo`}>Móc's</div>
+      <div
+        className={`logo ${theme}-Logo cursor-pointer`}
+        onClick={() => {
+          navigate("/");
+        }}
+      >
+        Móc's
+      </div>
 
       <nav className="nav-tabs">
         <ul>
@@ -53,9 +61,7 @@ const Header = () => {
             </NavLink>
           </li>
           <li>
-            <NavLink
-              to="https://www.oolimo.com/en/guitar-chords/analyze"
-            >
+            <NavLink to="https://www.oolimo.com/en/guitar-chords/analyze">
               {lang[language].Header.tabs.note}
             </NavLink>
           </li>

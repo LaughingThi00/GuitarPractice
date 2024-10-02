@@ -1,3 +1,4 @@
+import WelcomePage from "../../WelcomePage/WelcomePage";
 import { Theme } from "./themes";
 
 export const lang = {
@@ -16,6 +17,40 @@ export const lang = {
         light: Theme.Light.name.US,
       },
       login: "Login",
+    },
+    WelcomePage: {
+      letstart: "LET'S START",
+      welcome: "Welcome back to Móc's",
+      intro:
+        "Whether you're a beginner or a seasoned guitarist, our platform is here to help you on your musical journey. Dive into personalized practice routines, interactive chord charts, and progress tracking that adapts to your skill level. With a variety of resources at your fingertips, you'll be mastering your favorite songs and techniques in no time.",
+      feature: {
+        label: "Key Features",
+        chord: "Interactive Chord Diagrams",
+        pentatonic: "Pentatonic Practice",
+        note: "Full Guitar note remember",
+      },
+    },
+    Footer: {
+      label: "Móc's - Practice to play guitar well",
+      content: [
+        {
+          label: "About us",
+          item: ["Introduce", "Author", "Guilde"],
+        },
+        {
+          label: "Document",
+          item: [
+            "Basic music theory",
+            "Advanced music theory",
+            "Youtube Learn",
+            "Guitar cool girl",
+          ],
+        },
+        {
+          label: "Contact",
+          item: ["Bug report", "Content recommend", "Contact me", "GOH"],
+        },
+      ],
     },
     SettingPart: {
       AllowRepeat: {
@@ -68,6 +103,39 @@ export const lang = {
         light: Theme.Light.name.VN,
       },
       login: "Đăng nhập",
+    },
+    WelcomePage: {
+      letstart: "BẮT ĐẦU",
+      welcome: "Chào mừng bạn đã quay lại cùng Móc's",
+      intro: "wgrger vưeerhce",
+      feature: {
+        label: "Chế độ chính",
+        chord: "Luyện Hợp âm",
+        pentatonic: "Luyện Ngũ cung",
+        note: "Luyện Nốt",
+      },
+    },
+    Footer: {
+      label: "Móc's - Tập luyện để giỏi guitar",
+      content: [
+        {
+          label: "Về Móc's",
+          item: ["Giới thiệu", "Tác giả", "Hướng dẫn sử dụng"],
+        },
+        {
+          label: "Tài liệu",
+          item: [
+            "Nhạc lý cơ bản",
+            "Nhạc lý nâng cao",
+            "Học đàn qua Youtube",
+            "Gái xinh đánh guitar",
+          ],
+        },
+        {
+          label: "Liên hệ",
+          item: ["Báo cáo bugs", "Đóng góp nội dung", "Liên hệ", "GOH"],
+        },
+      ],
     },
     SettingPart: {
       AllowRepeat: {

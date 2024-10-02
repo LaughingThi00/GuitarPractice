@@ -36,9 +36,10 @@ COMING:
     beardcumd giam chu =====> chua can
     toast thong bao  =====> chua can
 
+2/10
+    wellcomepage ==>ok 
+    footer VNUS ==>ok
 
-    wellcomepage
-    footer VNUS
     basic va advanced chordring
     chordring ngoai
     save
