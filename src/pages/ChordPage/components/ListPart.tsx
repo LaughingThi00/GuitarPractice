@@ -50,7 +50,7 @@ const ListPart = () => {
   const { theme, language } = useContext(GlobalContext);
   return (
     <div
-      className={`ListPart-ChordPage med:w-full med:min-h-[50dvh] med:max-h-[50dvh] med:h-[50dvh] med:pb-20 ${theme}-Background`}
+      className={`ListPart-ChordPage med:w-full med:min-h-[80dvh] med:max-h-[80dvh] med:h-[80dvh] med:pb-20 ${theme}-Background`}
     >
       <div
         className={`ListPart-ChordPage-Main  ${theme}-ChordPage-ListPart w-full`}
