@@ -1,6 +1,4 @@
-import "./css/App.css";
-import "./css/Chord.css";
-import "./css/Button.css"
+import "./css/index.css";
 import React from "react";
 import GlobalProvider from "./provider/globalProvider";
 import Web from "./Web";

@@ -1,0 +1,12 @@
+
+
+@import './outlines/Header.css';
+@import './outlines/Footer.css';
+
+@import './pages/Chord.css';
+
+@import './components/Button.css';
+
+@import './general/Theme.css';
+
+@import './general/App.css';

@@ -7,24 +7,38 @@ const Footer: React.FC = () => {
   return (
     <footer className={`${theme}-Footer text-white py-8`}>
       <div
-        className="text-3xl font-bold mt-1 mb-5 "
+        className="text-4xl font-bold mt-5 mb-40 mini:mb-20 "
         style={{ fontFamily: "Dancing Script, cursive" }}
       >
         {lang[language].Footer.label}
       </div>
-      <div className=" flex flex-row place-content-evenly items-sketch">
+      <div
+        className=" 
+        Footer-Content-Container 
+        mini:flex-col"
+      >
         {lang[language].Footer.content.map((ct, ind) => {
           return (
             <div
               key={ind}
-              className="flex flex-column items-start justify-start"
+              className="flex flex-col items-start justify-start 
+
+              mini:justify-center 
+              mini:items-center 
+              mini:space-content-between 
+              mini:mb-10"
             >
-              <h5 className="text-lg font-bold mb-3">{ct.label}</h5>
-              <ul className="list-disc list-inside flex flex-column items-start">
+              <h5 className="text-2xl font-bold  h-1/3">{ct.label}</h5>
+              <ul className="list-disc list-inside flex flex-col items-start h-2/3">
                 {ct.item.map((element, index) => {
                   return (
-                    <li key={index}>
-                      <a href="#" className="hover:text-white">
+                    <li
+                      key={index}
+                      className=" p-1 opacity-50 hover:opacity-100 text-white-200 text-xl"
+                    >
+                      <a
+                        className={`no-underline text-inherit focus:outline-none cursor-pointer transition-all duration-300 ${theme}-Footer-Item-Hover `}
+                      >
                         {element}
                       </a>
                     </li>
@@ -34,77 +48,6 @@ const Footer: React.FC = () => {
             </div>
           );
         })}
-        {/* <div className="flex flex-column items-start justify-start">
-          <h5 className="text-lg font-bold mb-3">Về Móc's</h5>
-          <ul className="list-disc list-inside flex flex-column items-start">
-            <li>
-              <a href="#" className="hover:text-white">
-                Giới thiệu
-              </a>
-            </li>
-            <li>
-              <a href="#" className="hover:text-white">
-                Tác giả{" "}
-              </a>
-            </li>
-            <li>
-              <a href="#" className="hover:text-white">
-                {" "}
-                Hướng dẫn sử dụng
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div className="flex flex-column items-start justify-start">
-          <h5 className="text-lg font-bold mb-3">Tài liệu</h5>
-          <ul className="list-disc list-inside flex flex-column items-start">
-            <li>
-              <a href="#" className="hover:text-white">
-                Nhạc lý cơ bản{" "}
-              </a>
-            </li>
-            <li>
-              <a href="#" className="hover:text-white">
-                Nhạc lý nâng cao{" "}
-              </a>
-            </li>
-            <li>
-              <a href="#" className="hover:text-white">
-                Học đàn qua Youtube{" "}
-              </a>
-            </li>
-            <li>
-              <a href="#" className="hover:text-white">
-                Gái xinh đánh guitar{" "}
-              </a>
-            </li>
-          </ul>
-        </div>{" "}
-        <div className="flex flex-column items-start justify-start">
-          <h5 className="text-lg font-bold mb-3">Liên hệ</h5>
-          <ul className="list-disc list-inside flex flex-column items-start">
-            <li>
-              <a href="#" className="hover:text-white">
-                Báo cáo bugs
-              </a>
-            </li>
-            <li>
-              <a href="#" className=" hover:text-white">
-                Đóng góp nội dung{" "}
-              </a>
-            </li>
-            <li>
-              <a href="#" className="hover:text-white">
-                Liên hệ
-              </a>
-            </li>
-            <li>
-              <a href="#" className="hover:text-white">
-                GOH
-              </a>
-            </li>
-          </ul>
-        </div>{" "} */}
       </div>{" "}
       <div className="text-center mt-20 mb-2">
         <p className="opacity-50 text-sm">© Laughing Thi</p>

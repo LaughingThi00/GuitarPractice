@@ -13,11 +13,10 @@ body {
   overflow-y: scroll;
   height: 100vh;
 }
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+body::-webkit-scrollbar {
+  display: none;
 }
+
 
 html {
   overflow: -moz-scrollbars-none;
@@ -28,14 +27,6 @@ html {
 #root {
   height: 100vh;
 }
-body::-webkit-scrollbar {
-  display: none;
-}
-
-svg {
-  max-width: 100%;
-  max-height: 100%;
-}
 
 .App {
   text-align: center;
@@ -43,9 +34,19 @@ svg {
   height: 100%;
 }
 
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+}
+
+svg {
+  max-width: 100%;
+  max-height: 100%;
 }
 
 @media (prefers-reduced-motion: no-preference) {

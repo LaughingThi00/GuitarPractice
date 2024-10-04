@@ -46,10 +46,10 @@ const SettingPart = () => {
     );
   }, [theme]);
   return (
-    <div className="SettingPart-ChordPage ">
-      <div className="flex flex-column justify-center items-center">
-        <button
-          className={`button-SettingPart
+    <div className="SettingPart-ChordPage med:w-full">
+      <div className="flex flex-col justify-center items-center med:flex-row  med:flex-wrap">
+        <button 
+          className={`button-SettingPart med:w-1/4
             ${
               AllowRepeat
                 ? `${Theme[theme].ColorPath[0]}`
@@ -64,7 +64,7 @@ const SettingPart = () => {
             : lang[language].SettingPart.AllowRepeat.Repeated}
         </button>
         <button
-          className={`button-SettingPart
+          className={`button-SettingPart  med:w-1/4
             ${
               Mode === ModeType.Single
                 ? `${Theme[theme].ColorPath[0]}`
@@ -84,7 +84,7 @@ const SettingPart = () => {
 
         {Mode === ModeType.Multiple && (
           <>
-            <div className="flex items-center p-2 m-1 border rounded-lg shadow-md bg-white w-4/5">
+            <div className="flex items-center p-2 m-1 border rounded-lg shadow-md bg-white w-4/5 med:w-1/4">
               <FontAwesomeIcon
                 className={` mr-2`}
                 icon={faClock}
@@ -112,7 +112,7 @@ const SettingPart = () => {
           </>
         )}
         <button
-          className={`button-SettingPart
+          className={`button-SettingPart med:w-1/4
             ${
               Content === ContentType.Custom
                 ? `${Theme[theme].ColorPath[0]}`
@@ -134,7 +134,7 @@ const SettingPart = () => {
         </button>
 
         {Content !== ContentType.Custom && (
-          <div className="flex flex-column justify-center items-center w-full">
+          <div className="flex flex-col justify-center items-center w-full med:flex-row med:flex-wrap med:w-4/5  ">
             <Select
               placeholder={
                 Content === ContentType.TonicBased
@@ -152,7 +152,7 @@ const SettingPart = () => {
               options={
                 Content === ContentType.TonicBased ? optionsNote : optionsTone
               }
-              className="w-4/5 m-1"
+              className="w-4/5 m-1 med:w-full"
             />{" "}
             {Content === ContentType.HarmonyBased && (
               <Select
@@ -160,7 +160,7 @@ const SettingPart = () => {
                 placeholder={lang[language].SettingPart.PlaceHolder.chooseRing}
                 onChange={handleChangeRingOption}
                 value={ringOption}
-                className="w-4/5 m-1"
+                className="w-4/5 m-1 med:w-full"
               />
             )}
             <Select
@@ -194,7 +194,7 @@ const SettingPart = () => {
                 Content === ContentType.TonicBased ? tonicOption : harmonyOption
               }
               placeholder={lang[language].SettingPart.PlaceHolder.chooseOption}
-              className="w-4/5 m-1"
+              className="w-4/5 m-1 med:w-full"
             />
             <button
               disabled={

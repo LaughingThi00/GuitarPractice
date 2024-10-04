@@ -1,10 +1,10 @@
 import { OverlayTrigger, Tooltip } from "react-bootstrap";
 
-export const OverLayNote = ({ note = "", item, theme }) => {
+export const HoverTooltip = ({ note = "", item, styled="" }) => {
   return (
     <OverlayTrigger
       placement="bottom"
-      overlay={<Tooltip id="tooltip-top">{note}</Tooltip>}
+      overlay={<Tooltip id="tooltip-top" className={styled}>{note}</Tooltip>}
     >
       {item}
     </OverlayTrigger>

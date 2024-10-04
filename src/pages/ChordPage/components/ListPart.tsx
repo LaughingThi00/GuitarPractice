@@ -49,9 +49,9 @@ const ListPart = () => {
   } = useContext(ChordPageContext);
   const { theme, language } = useContext(GlobalContext);
   return (
-    <div className="ListPart-ChordPage">
+    <div className="ListPart-ChordPage med:w-full med:min-h-[30vh] med:max-h-[50vh] med:pb-20">
       <div className={`ListPart-ChordPage-Main  ${theme}-ChordPage-ListPart`}>
-        <div className="w-full flex flex-column">
+        <div className="w-full flex flex-col">
           <div className="m-1  SettingPart-settingButtonGroup">
             <button
               className="button-ListPart"
@@ -154,7 +154,7 @@ const ListPart = () => {
               <Droppable droppableId="playlist">
                 {(provided) => (
                   <ul
-                    className=" w-4/5 pb-3 pt-1"
+                    className=" pb-3 pt-1 w-full"
                     {...provided.droppableProps}
                     ref={provided.innerRef}
                   >
@@ -175,7 +175,7 @@ const ListPart = () => {
                                 style={{
                                   ...provided.draggableProps.style,
                                 }}
-                                className="Chord-QueueList-Item"
+                                className="Chord-QueueList-Item med:h-[8vh]"
                                 key={item[2]}
                               >
                                 <div
@@ -189,7 +189,7 @@ const ListPart = () => {
                                   }}
                                 >
                                   {nameChord.includes("-") ? (
-                                    <div className="flex flex-column">
+                                    <div className="flex flex-col">
                                       {!HideDegree && (
                                         <h3 className="text-xs text-red-500">
                                           {" "}
@@ -207,7 +207,7 @@ const ListPart = () => {
                                       )}
                                     </div>
                                   ) : (
-                                    <div className="flex flex-column">
+                                    <div className="flex flex-col">
                                       <h3 className="text-2xl">
                                         {" "}
                                         {refreshChordName(nameChord)}

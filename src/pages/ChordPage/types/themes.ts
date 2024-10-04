@@ -12,7 +12,8 @@ export const Theme = {
       "Dark-ColorPath-Third",
     ],
     Button: { On: "Dark-Button-On", Off: "Dark-Button-Off" },
-    Header: "Dark-Header",    Footer:"Dark-Footer",
+    Header: "Dark-Header",
+    Footer: "Dark-Footer",
 
     ChordPage: {
       SettingPart: { Slider: { Pointer: "black" } },
@@ -41,7 +42,8 @@ export const Theme = {
     ],
 
     Button: { On: "Light-Button-On", Off: "Light-Button-Off" },
-    Header: "Light-Header",    Footer:"Light-Footer",
+    Header: "Light-Header",
+    Footer: "Light-Footer",
 
     ChordPage: {
       SettingPart: { Slider: { Pointer: "orange" } },

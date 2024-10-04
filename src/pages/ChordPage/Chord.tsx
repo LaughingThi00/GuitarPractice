@@ -6,10 +6,7 @@ import { ChordProvider } from "./provider/ChordProvider";
 const ChordPage = () => {
   return (
     <ChordProvider>
-      <div
-        className=" ChordPage"
-        style={{ paddingTop: "12vh", height: "100%" }}
-      >
+      <div className=" ChordPage med:flex-col med:h-auto ">
         <SettingPart />
         <ChordPart />
         <ListPart />
