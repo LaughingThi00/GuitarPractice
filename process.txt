@@ -43,7 +43,7 @@ COMING:
 4/10
     responsive====>ok
 
-
+    bug: nut mobile nho (settingbutton, ), draggable qua nhay tren mobile
     basic va advanced chordring
     chordring ngoai
     save
@@ -51,3 +51,4 @@ COMING:
     cai gio luyen tap
     auto chuyen sang hop am nang cao 
     auto chuyen passing chord 
+    bug:chordring khi only mode dang bat

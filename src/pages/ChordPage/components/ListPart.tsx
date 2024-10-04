@@ -109,7 +109,7 @@ const ListPart = () => {
           <Select
             options={ChordList}
             placeholder={lang[language].ListPart.PlaceHolder.chooseChord}
-            menuPlacement={window.innerWidth <= 900 ? "top" : "bottom"}
+            // menuPlacement={window.innerWidth <= 900 ? "top" : "bottom"}
             onChange={handleAdd}
             className="w-full mb-1 font-bold med:w-4/5  med:ml-auto med:mr-auto "
             styles={{
@@ -160,7 +160,7 @@ const ListPart = () => {
               <Droppable droppableId="playlist">
                 {(provided) => (
                   <ul
-                    className=" pb-3 pt-1 w-full"
+                    className=" pb-3 pt-1 w-full med:flex med:flex-col med:items-center"
                     {...provided.droppableProps}
                     ref={provided.innerRef}
                   >
@@ -181,11 +181,11 @@ const ListPart = () => {
                                 style={{
                                   ...provided.draggableProps.style,
                                 }}
-                                className="Chord-QueueList-Item med:h-[8vh]"
+                                className="Chord-QueueList-Item med:h-[10vh] med:flex med:justify-center"
                                 key={item[2]}
                               >
                                 <div
-                                  className={`ChordItem ${theme}-ChordPage-SettingPart-ChordItem-${
+                                  className={`ChordItem med:w-1/3 ${theme}-ChordPage-SettingPart-ChordItem-${
                                     NowChord && item[2] === NowChord[2]
                                       ? "chosen"
                                       : "showing"
