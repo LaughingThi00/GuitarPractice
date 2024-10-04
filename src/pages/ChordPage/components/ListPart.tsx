@@ -49,8 +49,12 @@ const ListPart = () => {
   } = useContext(ChordPageContext);
   const { theme, language } = useContext(GlobalContext);
   return (
-    <div className={`ListPart-ChordPage med:w-full med:min-h-[50dvh] med:max-h-[50dvh] med:h-[50dvh] med:pb-20 ${theme}-Background`}>
-      <div className={`ListPart-ChordPage-Main  ${theme}-ChordPage-ListPart w-full`}>
+    <div
+      className={`ListPart-ChordPage med:w-full med:min-h-[50dvh] med:max-h-[50dvh] med:h-[50dvh] med:pb-20 ${theme}-Background`}
+    >
+      <div
+        className={`ListPart-ChordPage-Main  ${theme}-ChordPage-ListPart w-full`}
+      >
         <div className="w-full flex flex-col">
           <div className="m-1 w-full  SettingPart-settingButtonGroup">
             <button
@@ -105,6 +109,7 @@ const ListPart = () => {
           <Select
             options={ChordList}
             placeholder={lang[language].ListPart.PlaceHolder.chooseChord}
+            menuPlacement={window.innerWidth <= 900 ? "top" : "bottom"}
             onChange={handleAdd}
             className="w-full mb-1 font-bold"
             styles={{
@@ -137,6 +142,7 @@ const ListPart = () => {
               }),
               menu: (provided) => ({
                 ...provided,
+                zIndex: 9999,
                 backgroundColor:
                   Theme[theme].ChordPage.ListPart.ChordSelect.mainColor,
               }),
