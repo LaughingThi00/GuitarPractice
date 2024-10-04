@@ -10,10 +10,13 @@ module.exports = {
       screens: {
         mini: { max: "700px" },
         med: { max: "900px" },
-        aver:{max:"1100px"}
+        aver: { max: "1100px" },
       },
       height: {
         "1/3vh": "33.33vh",
+      },
+      inset: {
+        "15pc":"15%"
       },
     },
   },

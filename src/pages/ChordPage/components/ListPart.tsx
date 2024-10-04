@@ -111,7 +111,7 @@ const ListPart = () => {
             placeholder={lang[language].ListPart.PlaceHolder.chooseChord}
             menuPlacement={window.innerWidth <= 900 ? "top" : "bottom"}
             onChange={handleAdd}
-            className="w-full mb-1 font-bold"
+            className="w-full mb-1 font-bold med:w-4/5  med:ml-auto med:mr-auto "
             styles={{
               control: (provided, state) => ({
                 ...provided,
