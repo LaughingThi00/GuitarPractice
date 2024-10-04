@@ -43,9 +43,11 @@ COMING:
 4/10
     responsive====>ok
 
-    
+
     basic va advanced chordring
     chordring ngoai
     save
     testcase full
     cai gio luyen tap
+    auto chuyen sang hop am nang cao 
+    auto chuyen passing chord 

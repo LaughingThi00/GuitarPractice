@@ -49,7 +49,7 @@ const ListPart = () => {
   } = useContext(ChordPageContext);
   const { theme, language } = useContext(GlobalContext);
   return (
-    <div className={`ListPart-ChordPage med:w-full med:min-h-[50vh] med:max-h-[50vh] med:h-[50vh] med:pb-20 ${theme}-Background`}>
+    <div className={`ListPart-ChordPage med:w-full med:min-h-[50dvh] med:max-h-[50dvh] med:h-[50dvh] med:pb-20 ${theme}-Background`}>
       <div className={`ListPart-ChordPage-Main  ${theme}-ChordPage-ListPart w-full`}>
         <div className="w-full flex flex-col">
           <div className="m-1 w-full  SettingPart-settingButtonGroup">
