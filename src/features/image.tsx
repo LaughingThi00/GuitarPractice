@@ -162,10 +162,10 @@ export function createChordImage(chord, baby, showName) {
     );
   }
   return (
-    <div>
+    <div className="">
       <span>{showName && name}</span>
       <div className="relative flex flex-row justify-center items-center">
-        <div className=" absolute left-1/4 top-1/4 h-3/4 text-2xl med:left-15pc med:top-15pc">
+        <div className=" absolute left-22pc top-1/4 h-3/4 text-xl med:left-20pc med:top-22pc med:text-sm">
           [{findCapo(data.fret) + 1}fr]{" "}
         </div>
         <div className="flex flex-row justify-center items-center w-1/2 h-1/2 ">

@@ -5,7 +5,7 @@ import { lang } from "../ChordPage/types/language";
 const Footer: React.FC = () => {
   const { theme, language } = useContext(GlobalContext);
   return (
-    <footer className={`${theme}-Footer text-white py-8`}>
+    <footer className={`${theme}-Footer text-white py-8 `}>
       <div
         className="text-4xl font-bold mt-5 mb-40 mini:mb-20 "
         style={{ fontFamily: "Dancing Script, cursive" }}

@@ -11,12 +11,15 @@ module.exports = {
         mini: { max: "700px" },
         med: { max: "900px" },
         aver: { max: "1100px" },
+        landscape: { raw: "(orientation: landscape)" },
       },
       height: {
         "1/3vh": "33.33vh",
       },
       inset: {
-        "15pc":"15%"
+        "15pc": "15%",
+        "22pc": "22%",
+        "20pc": "20%",
       },
     },
   },

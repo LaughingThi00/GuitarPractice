@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { GlobalContext } from "../../provider/globalProvider";
-import { Button, Carousel } from "react-bootstrap";
+import {  Carousel } from "react-bootstrap";
 import { Theme } from "../ChordPage/types/themes";
 import { useNavigate } from "react-router-dom";
 

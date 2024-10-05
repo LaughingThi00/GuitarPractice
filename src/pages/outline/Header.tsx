@@ -105,12 +105,12 @@ const Header = () => {
       </div>
       <button
         className="button-Header w-1/4"
-        role="button"
+        
         onClick={toggleLanguage}
       >
         {language}{" "}
       </button>
-      <button className="button-Header w-1/4" role="button">
+      <button className="button-Header w-1/4" >
         <FontAwesomeIcon icon={faRightToBracket} />{" "}
       </button>
     </div>

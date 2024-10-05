@@ -11,7 +11,7 @@ import {
   createGroupFromOneChord,
   pickFirstChordFromGroup,
 } from "../../../features/image";
-import { deromanize, romanize } from "romans";
+import { romanize } from "romans";
 import { ContentType, ModeType } from "./../types/types";
 import {
   optionChordSet,
@@ -22,7 +22,6 @@ import {
   analyzeName,
   findChordItem,
   findDegree,
-  findDifference,
   findNext,
   refreshChordName,
   replaceArrInQueue,

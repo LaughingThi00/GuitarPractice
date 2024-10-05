@@ -47,13 +47,14 @@ const ListPart = () => {
     handleHideForm,
     handleHideDegree,
   } = useContext(ChordPageContext);
-  const { theme, language } = useContext(GlobalContext);
+  const { theme, language,groupNav } = useContext(GlobalContext);
   return (
     <div
       className={`ListPart-ChordPage med:w-full med:min-h-[80dvh] med:max-h-[80dvh] med:h-[80dvh] med:pb-20 ${theme}-Background`}
+      id="_ListPart"
     >
       <div
-        className={`ListPart-ChordPage-Main  ${theme}-ChordPage-ListPart w-full`}
+        className={`ListPart-ChordPage-Main  ${theme}-ChordPage-ListPart w-full h-full flex-grow`}
       >
         <div className="w-full flex flex-col">
           <div className="m-1 w-full  SettingPart-settingButtonGroup">

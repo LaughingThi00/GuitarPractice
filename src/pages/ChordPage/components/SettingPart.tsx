@@ -10,7 +10,13 @@ import {
   optionsTonicBased,
 } from "../options/options";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowsToDot, faClock } from "@fortawesome/free-solid-svg-icons";
+import {
+  faArrowsToDot,
+  faClock,
+  faGuitar,
+  faRectangleList,
+  faSliders,
+} from "@fortawesome/free-solid-svg-icons";
 import { Theme } from "../types/themes";
 import { GlobalContext } from "../../../provider/globalProvider";
 import { lang } from "../types/language";
@@ -37,7 +43,7 @@ const SettingPart = () => {
     handleChangeMode,
     handleSliderIntervalChordChange,
   } = useContext(ChordPageContext);
-  const { theme, language } = useContext(GlobalContext);
+  const { theme, language, groupNav } = useContext(GlobalContext);
 
   useLayoutEffect(() => {
     document.documentElement.style.setProperty(
@@ -45,13 +51,16 @@ const SettingPart = () => {
       Theme[theme].ChordPage.SettingPart.Slider.Pointer
     );
   }, [theme]);
+
+
+
   return (
-    <div className="SettingPart-ChordPage med:w-full">
+    <div className="SettingPart-ChordPage med:w-full" id="_SettingPart">
       <div className="flex flex-col justify-center items-center med:flex-row  med:flex-wrap">
-        <button 
+        <button
           className={`button-SettingPart med:w-1/4
             ${
-              AllowRepeat
+              !AllowRepeat
                 ? `${Theme[theme].ColorPath[0]}`
                 : `${Theme[theme].ColorPath[1]}`
             }
@@ -59,7 +68,7 @@ const SettingPart = () => {
           onClick={() => handleChangeAllowRepeat()}
           role="button"
         >
-          {AllowRepeat
+          {!AllowRepeat
             ? lang[language].SettingPart.AllowRepeat.Only
             : lang[language].SettingPart.AllowRepeat.Repeated}
         </button>

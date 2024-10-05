@@ -1,4 +1,3 @@
-import WelcomePage from "../../WelcomePage/WelcomePage";
 import { Theme } from "./themes";
 
 export const lang = {
