@@ -43,9 +43,11 @@ COMING:
 4/10
     responsive====>ok
     draggable qua nhay tren mobile ===>ok
+5/10    
+    bug: nut mobile nho (settingbutton, )=====>ok 
+    
 
     passing chord nen co mau khac
-    bug: nut mobile nho (settingbutton, ), 
     basic va advanced chordring
     chordring ngoai
     save
