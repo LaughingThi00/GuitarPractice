@@ -10,10 +10,10 @@ const ChordPart = () => {
 
   return (
     <div
-      className="ChordPart-ChordPage med:w-full med:min-h-[60vh]"
+      className="ChordPart-ChordPage med:w-full med:min-h-[50vh] med:h-[50vh]"
       id="_ChordPart"
     >
-      <div className="MyChord-Container med:h-full">
+      <div className="MyChord-Container min-h-[80vh]">
         {NowChord ? createChordImage(NowChord, true, true) : <div></div>}
         <RisingBeat />{" "}
       </div>

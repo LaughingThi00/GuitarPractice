@@ -2,6 +2,7 @@ import React, {
   createContext,
   useContext,
   useEffect,
+  useLayoutEffect,
   useRef,
   useState,
 } from "react";
@@ -12,7 +13,7 @@ import {
   pickFirstChordFromGroup,
 } from "../../../features/image";
 import { romanize } from "romans";
-import { ContentType, ModeType } from "./../types/types";
+import { ContentType, HarmonyType, ModeType } from "./../types/types";
 import {
   optionChordSet,
   optionColorChord,
@@ -137,7 +138,6 @@ export function ChordProvider({ children }) {
   };
   const [ringOption, setRingOption] = useState(null);
   const handleChangeRingOption = (val) => {
-    if (!val) return;
     setRingOption(val);
   };
   const [NowChord, setNowChord] = useState(null);
@@ -184,6 +184,7 @@ export function ChordProvider({ children }) {
     if (!val) return;
     setNoteOption(val);
   };
+  const [Built, setBuilt] = useState(false);
   const [tonicOption, setTonicOption] = useState(null);
   const handleChangeTonicOption = (val) => {
     if (!val) return;
@@ -197,7 +198,10 @@ export function ChordProvider({ children }) {
   const handleAdd = (chord) => {
     if (!chord) return;
     if (typeof chord === "object") chord = chord.label;
-    if (AllowRepeat || !Queue.find((item) => item[0] === chord)) {
+    if (
+      AllowRepeat ||
+      !Queue.find((item) => refreshChordName(item[0]) === chord)
+    ) {
       let AddingChord = pickFirstChordFromGroup(
         List.find((item) => item[0] === chord)
       );
@@ -282,25 +286,54 @@ export function ChordProvider({ children }) {
             pickFirstChordFromGroup(List.find((c) => c[0] === chord))
           )
           .filter(Boolean);
+
         if (AllowRepeat) setQueue((prev) => [...prev, ...res]);
-        else setQueue(res);
+        else setQueue((prev) => res);
       } else {
         ringOption.value.split("").forEach((degree) => {
           degree = Number(degree);
           toneOption.value.forEach((chord, index) => {
-            if (index + 1 === degree)
-              res.push(
-                pickFirstChordFromGroup(List.find((c) => c[0] === chord))
+            if (index + 1 === degree) {
+              let AddingChord = pickFirstChordFromGroup(
+                List.find((c) => c[0] === chord)
               );
+
+              res.push(AddingChord);
+            }
           });
         });
+
         if (AllowRepeat) setQueue((prev) => [...prev, ...res]);
         else setQueue(res);
       }
     }
-    setNowChord(res[0]);
+    if (
+      Content === ContentType.HarmonyBased &&
+      harmonyOption &&
+      harmonyOption.value === HarmonyType.Advanced
+    ) {
+      if (!Built) setBuilt(true);
+    }
   };
-
+  useLayoutEffect(() => {
+    if (
+      Content === ContentType.HarmonyBased &&
+      harmonyOption &&
+      harmonyOption.value === HarmonyType.Advanced
+    ) {
+      if (Built) {
+        buildAdvancedChordSet();
+        setBuilt(false);
+      }
+    }
+  }, [Built]);
+  const buildAdvancedChordSet = (arrQueue = Queue) => {
+    arrQueue.forEach((item, ind) => {
+      if (ind === 0) {
+        setNowChord(empowerOneChord(item)[0]);
+      } else empowerOneChord(item, false);
+    });
+  };
   const handleChangeChordForm = (chord) => {
     const chordOrigin = List.find(
       (item) => item[0] === refreshChordName(chord[0])
@@ -315,11 +348,13 @@ export function ChordProvider({ children }) {
       findDegree(chord[0])
     );
     idx = Queue.findIndex((item) => item[2] === chord[2]);
+    if(chord[2]) next[2]=chord[2]
     if (idx !== -1) {
       Queue[idx] = next;
       setQueue(Queue);
       setNowChord(next);
     }
+    return next;
   };
 
   const empowerGroupChord = (chord) => {
@@ -340,6 +375,7 @@ export function ChordProvider({ children }) {
     if (!checkArr.length) return;
 
     const DegreeOfChord = findDegree(chord[0]);
+
     const analName = analyzeName(refreshChordName(checkArr[0][0]));
 
     optionColorChord[toneOption.label.includes("m") ? 1 : 0].list.forEach(
@@ -380,7 +416,10 @@ export function ChordProvider({ children }) {
     setNowChord(res[0]);
   };
 
-  const empowerOneChord = (chord) => {
+  const empowerOneChord = (chord: Array<any>, setChord = true) => {
+    if (!chord) {
+      return;
+    }
     if (Content === ContentType.HarmonyBased) {
       if (!toneOption) return;
       if (chord[3] !== undefined) {
@@ -389,6 +428,7 @@ export function ChordProvider({ children }) {
 
       const DegreeOfChord = findDegree(chord[0]);
       let res = [];
+
       const analName = analyzeName(refreshChordName(chord[0]));
 
       optionColorChord[toneOption.label.includes("m") ? 1 : 0].list.forEach(
@@ -425,7 +465,8 @@ export function ChordProvider({ children }) {
         );
 
       setQueue((prev) => replaceChordInQueue(prev, chord, res));
-      setNowChord(res[0]);
+      if (setChord) setNowChord(res[0]);
+      return res;
     }
   };
 
@@ -442,20 +483,24 @@ export function ChordProvider({ children }) {
     }
     if (!AddingChord) return;
     AddingChord = pickFirstChordFromGroup(
-      List.find((c) => c[0] === AddingChord)
+      List.find((c) => c[0] === AddingChord),
+      true
     );
+
     setQueue((prev) => {
       let index = prev.findIndex((c) => c[2] === chord[2]);
       if (chord[3] !== undefined && chord[3] !== 0)
         index = index - chord[3] >= 0 ? index - chord[3] : -1;
-      if (index < 0) return prev;
+      if (index < 0) {
+        return prev;
+      }
       if (
         index > 0 &&
         refreshChordName(prev[index - 1][0]) ===
           refreshChordName(AddingChord[0])
-      )
+      ) {
         return prev;
-      else {
+      } else {
         prev.splice(index, 0, AddingChord);
         setNowChord(AddingChord);
         return prev;

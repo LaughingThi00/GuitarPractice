@@ -7,7 +7,7 @@ const Footer: React.FC = () => {
   return (
     <footer className={`${theme}-Footer text-white py-8 `}>
       <div
-        className="text-4xl font-bold mt-5 mb-40 mini:mb-20 "
+        className="text-4xl font-bold mt-5 mb-40 med:m-20 "
         style={{ fontFamily: "Dancing Script, cursive" }}
       >
         {lang[language].Footer.label}

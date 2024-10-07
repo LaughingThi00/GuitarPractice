@@ -50,6 +50,7 @@ export function findChordItem(name) {
 }
 
 export function replaceChordInQueue(queue, chord, replaceArr) {
+  if (!chord) return;
   const chordName = chord[0];
   const index = queue.findIndex((c) => {
     if (c[2] === chord[2])
@@ -81,6 +82,7 @@ export const refreshChordName = (
   removeDegree = true,
   removeForm = true
 ) => {
+  
   let result = chordName;
 
   if (removeDegree && chordName.includes("-")) {
@@ -90,7 +92,6 @@ export const refreshChordName = (
   if (removeForm) {
     result = result.split(" ")[0];
   }
-
   return result;
 };
 

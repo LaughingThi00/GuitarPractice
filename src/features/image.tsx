@@ -10,11 +10,12 @@ import { romanize } from "romans";
 
 const List = Object.entries(ListJSON);
 
-export const addTimestamp = (chord) => {
+export const addTimestamp = (chord, isPassingChord = false) => {
   if (!Array.isArray(chord)) return chord;
   if (chord.length !== 2) return chord;
-
-  const timestamp = String(Math.floor(Math.random() * 100000));
+  const timestamp = `${isPassingChord ? "PSC" : ""}${Math.floor(
+    Math.random() * 100000
+  )}`;
   return [...chord, timestamp];
 };
 export const createGroupFromOneChord = (chord) => {
@@ -38,10 +39,10 @@ export const createGroupFromOneChord = (chord) => {
   return quickSortChordGroup(group);
 };
 
-export const pickFirstChordFromGroup = (chord) => {
+export const pickFirstChordFromGroup = (chord, isPassingChord = false) => {
   if (!chord) return undefined;
   const AddingChord = [`${chord[0]} [1]`, chord[1]];
-  return addTimestamp(AddingChord);
+  return addTimestamp(AddingChord, isPassingChord);
 };
 export const createGroupFromChordSet = (list, scale, set) => {
   if (!list || !scale || !set) return;
@@ -149,7 +150,7 @@ export function createChordImage(chord, baby, showName) {
   let name = null;
   if (showName) {
     name = chord[0].includes(" ") ? (
-      <div>
+      <div className="pt-3">
         <span className="m-0 text-4xl inline font-bold relative">
           <span>{refreshChordName(chord[0])} </span>
           <span className="ml-2 text-2xl inline font-bold text-neutral-500 absolute">

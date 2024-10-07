@@ -22,10 +22,11 @@ export const GlobalProvider = ({ children }) => {
   const handleScroll = (id: string) => {
     const section = document.getElementById(id);
     if (section) {
+      const mov = id === "_ChordPart" ? 0.2 : 0.1;
       const offsetY =
         section.getBoundingClientRect().top +
         window.scrollY -
-        window.innerHeight * 0.1;
+        window.innerHeight * mov;
       window.scrollTo({ top: offsetY, behavior: "smooth" });
     }
   };
@@ -38,9 +39,7 @@ export const GlobalProvider = ({ children }) => {
   ];
 
   const groupNav = (
-    <div
-      className="ScrollBar-container"
-    >
+    <div className="ScrollBar-container">
       {NavType.map((it, idx) => (
         <div
           key={idx}

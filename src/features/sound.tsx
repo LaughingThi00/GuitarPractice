@@ -71,7 +71,7 @@ export function RisingBeat() {
     }
   };
   return (
-    <div>
+    <div className="flex flex-col">
       <div>
         <Button variant="secondary" onClick={handleChangeBeat} className="mt-2">
           {beat === BeatList[0].sound

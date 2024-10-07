@@ -1,6 +1,6 @@
 import { HarmonyType, TonicType } from "../types/types";
 
-export const optionsRing = [
+export const optionsRing: readonly any[] = [
   { value: "1564", label: "1564" },
   { value: "1645", label: "1645" },
   { value: "4321", label: "4321" },

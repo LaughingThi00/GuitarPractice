@@ -18,4 +18,5 @@ export enum TonicType {
 export enum HarmonyType {
   Basic = "Basic",
   Advanced = "Advanced",
+  
 }

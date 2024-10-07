@@ -5,6 +5,7 @@ export const Theme = {
       VN: "Màn đêm",
       US: "Dark Mode",
     },
+    Background: "#697565",
     Logo: "Dark-Logo",
     ColorPath: [
       "Dark-ColorPath-First",
@@ -35,6 +36,8 @@ export const Theme = {
 
     name: { VN: "Mặt trời", US: "Light Mode" },
     Logo: "Light-Logo",
+    Background: "#faf6ed",
+
     ColorPath: [
       "Light-ColorPath-First",
       "Light-ColorPath-Second",

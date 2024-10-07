@@ -2,6 +2,7 @@ import React, { useContext, useLayoutEffect } from "react";
 import { ChordPageContext } from "./../provider/ChordProvider";
 import { ContentType, ModeType } from "../types/types";
 import Select from "react-select";
+import CreatableSelect from "react-select/creatable";
 import {
   optionsHarmonyBased,
   optionsNote,
@@ -10,13 +11,7 @@ import {
   optionsTonicBased,
 } from "../options/options";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faArrowsToDot,
-  faClock,
-  faGuitar,
-  faRectangleList,
-  faSliders,
-} from "@fortawesome/free-solid-svg-icons";
+import { faArrowsToDot, faClock } from "@fortawesome/free-solid-svg-icons";
 import { Theme } from "../types/themes";
 import { GlobalContext } from "../../../provider/globalProvider";
 import { lang } from "../types/language";
@@ -50,12 +45,15 @@ const SettingPart = () => {
       "--pointer",
       Theme[theme].ChordPage.SettingPart.Slider.Pointer
     );
+
+    document.documentElement.style.backgroundColor = Theme[theme].Background;
   }, [theme]);
 
-
-
   return (
-    <div className="SettingPart-ChordPage med:w-full" id="_SettingPart">
+    <div
+      className="SettingPart-ChordPage med:w-full med:mb-5"
+      id="_SettingPart"
+    >
       <div className="flex flex-col justify-center items-center med:flex-row  med:flex-wrap">
         <button
           className={`button-SettingPart med:w-1/4
@@ -90,36 +88,6 @@ const SettingPart = () => {
             ]
           }
         </button>
-
-        {Mode === ModeType.Multiple && (
-          <>
-            <div className="flex items-center p-2 m-1 border rounded-lg shadow-md bg-white w-4/5 med:w-1/4">
-              <FontAwesomeIcon
-                className={` mr-2`}
-                icon={faClock}
-                style={{
-                  color: Theme[theme].ChordPage.SettingPart.Slider.Pointer,
-                }}
-              />
-              <input
-                id="IntervalChord"
-                type="range"
-                min="1000"
-                max="20000"
-                step="1000"
-                value={IntervalChord}
-                onChange={handleSliderIntervalChordChange}
-                className="w-full mx-1  range-slider"
-                style={{
-                  flexGrow: 1,
-                }}
-              />
-              <div className="inline-block font-bold text-gray-700">
-                {IntervalChord / 1000} s
-              </div>
-            </div>
-          </>
-        )}
         <button
           className={`button-SettingPart med:w-1/4
             ${
@@ -141,7 +109,35 @@ const SettingPart = () => {
             ]
           }
         </button>
-
+        {Mode === ModeType.Multiple && (
+          <>
+            <div className="flex items-center p-2 m-1 border rounded-lg shadow-md bg-white w-4/5 mini:w-90pc">
+              <FontAwesomeIcon
+                className={` mr-2`}
+                icon={faClock}
+                style={{
+                  color: Theme[theme].ChordPage.SettingPart.Slider.Pointer,
+                }}
+              />
+              <input
+                id="IntervalChord"
+                type="range"
+                min="1000"
+                max="20000"
+                step="1000"
+                value={IntervalChord}
+                onChange={handleSliderIntervalChordChange}
+                className="w-full mx-1 range-slider"
+                style={{
+                  flexGrow: 1,
+                }}
+              />
+              <div className="inline-block font-bold text-gray-700">
+                {IntervalChord / 1000} s
+              </div>
+            </div>
+          </>
+        )}{" "}
         {Content !== ContentType.Custom && (
           <div className="flex flex-col justify-center items-center w-full med:flex-row med:flex-wrap med:w-4/5  ">
             <Select
@@ -164,7 +160,8 @@ const SettingPart = () => {
               className="w-4/5 m-1 med:w-full"
             />{" "}
             {Content === ContentType.HarmonyBased && (
-              <Select
+              <CreatableSelect
+                isClearable
                 options={optionsRing}
                 placeholder={lang[language].SettingPart.PlaceHolder.chooseRing}
                 onChange={handleChangeRingOption}
@@ -214,7 +211,7 @@ const SettingPart = () => {
                   tonicOption
                 )
               }
-              className={`button-ListPart mt-3 ${
+              className={`button-ListPart ${
                 (Content === ContentType.HarmonyBased && toneOption) ||
                 (Content === ContentType.TonicBased &&
                   noteOption &&

@@ -45,14 +45,19 @@ COMING:
     draggable qua nhay tren mobile ===>ok
 5/10    
     bug: nut mobile nho (settingbutton, )=====>ok 
-    
+7/10
+    bug:chordring khi only mode dang bat ====>ok
+    passing chord nen co mau khac====>ok
+    auto chuyen sang color chord====>ok
+    auto chuyen passing chord ====>ok
+    change all form ====>ok
+    chordring ngoai ===>ok
 
-    passing chord nen co mau khac
-    basic va advanced chordring
-    chordring ngoai
+    Pentatonic
+    Note    
+    cai gio luyen tap
+    backend
+    login
     save
     testcase full
-    cai gio luyen tap
-    auto chuyen sang hop am nang cao 
-    auto chuyen passing chord 
-    bug:chordring khi only mode dang bat
+

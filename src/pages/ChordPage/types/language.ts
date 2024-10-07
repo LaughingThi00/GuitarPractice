@@ -70,6 +70,7 @@ export const lang = {
       HarmonyTypeOption: {
         Basic: "Basic",
         Advanced: "Advanced",
+
       },
       PlaceHolder: {
         chooseTone: "Choose a tone",
