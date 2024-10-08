@@ -7,11 +7,7 @@ import React, {
   useState,
 } from "react";
 import ListJSON from "../../../resource/chord/chordlibrary.json";
-import {
-  addTimestamp,
-  createGroupFromOneChord,
-  pickFirstChordFromGroup,
-} from "../../../features/image";
+
 import { romanize } from "romans";
 import { ContentType, HarmonyType, ModeType } from "./../types/types";
 import {
@@ -23,13 +19,14 @@ import {
   analyzeName,
   findChordItem,
   findDegree,
-  findNext,
   refreshChordName,
   replaceArrInQueue,
   replaceChordInQueue,
-} from "./../utils/utils";
+} from "./../utils/ChordUtils";
 import { Theme } from "../types/themes";
 import { GlobalContext } from "../../../provider/globalProvider";
+import { addTimestamp, createGroupFromOneChord, pickFirstChordFromGroup } from "../utils/ChordUtils";
+import { findNext } from "../utils/utils";
 
 export const List = Object.entries(ListJSON);
 export const ChordPageContext = createContext(null);
@@ -217,6 +214,7 @@ export function ChordProvider({ children }) {
       }
     }
   };
+
   const handleDelete = (chord) => {
     if (!chord) return;
     const resQueue = Queue.filter((item) => item[2] !== chord[2]);
@@ -348,7 +346,7 @@ export function ChordProvider({ children }) {
       findDegree(chord[0])
     );
     idx = Queue.findIndex((item) => item[2] === chord[2]);
-    if(chord[2]) next[2]=chord[2]
+    if (chord[2]) next[2] = chord[2];
     if (idx !== -1) {
       Queue[idx] = next;
       setQueue(Queue);

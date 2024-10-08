@@ -22,7 +22,7 @@ import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { ContentType } from "../types/types";
 import { GlobalContext } from "../../../provider/globalProvider";
 import { Theme } from "../types/themes";
-import { findDegree, findForm, refreshChordName } from "../utils/utils";
+import { findDegree, findForm, refreshChordName } from "../utils/ChordUtils";
 import { lang } from "../types/language";
 
 const ListPart = () => {

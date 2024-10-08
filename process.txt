@@ -53,6 +53,9 @@ COMING:
     change all form ====>ok
     chordring ngoai ===>ok
 
+toi 7/10, sang 8/10
+    bug: first chord, find capo. js pass by ref, value ====>ok
+    
     Pentatonic
     Note    
     cai gio luyen tap

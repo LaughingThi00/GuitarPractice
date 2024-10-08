@@ -14,7 +14,7 @@ const ChordPart = () => {
       id="_ChordPart"
     >
       <div className="MyChord-Container min-h-[80vh]">
-        {NowChord ? createChordImage(NowChord, true, true) : <div></div>}
+        {NowChord ? createChordImage(NowChord, true) : <div></div>}
         <RisingBeat />{" "}
       </div>
     </div>
