@@ -1,66 +1,62 @@
 before 26/9:
-26/9 - 27/9: empower chord. passing chord (5). fix bug ==> ok
+26/9 - 27/9: empower chord. passing chord (5). fix bug ------------------->ok
 28/9: 
-    -fix UI 
-    -fix bug (split)
-    -start to prac
-29/9: passing chord (251). fix UI. fix bug
-
-COMING:
-    -Full UI: ColorPalette, component, responsive
-    -Deploy
-    -Prac Note Remember (oolimo)
-    -Storage (for save)
-    -Backend (user, storage)
-    -Pentatonic (?)
-    -More sound
-    -(Quiz) 
-    -Doc: all theory
-    -Test 
+    -fix UI ------------------->ok
+    -fix bug (split) ------------------->ok
+    -start to prac ------------------->ok
+29/9: passing chord (251). fix UI. fix bug ------------------->ok
 
 30/9-1/10:
 
-    Lam container nowchord co dinh====>ok
-    clear || xoa item la nowchord => set nowchord = null. show all form la set nowchord lien =====> ok
-    mode multiple: xoa la mat nowchord lien. them hop am vao la cap nhat lien =====>ok
-    thanh slider interval xau vl =====> ok
-    thay bo cuc cac button =====> ok
-    Thay bo mau button  =====> ok
-    Set bien mau css global =====> ok
-    Lam tab header dep hon =====> ok
-    Logo-favicon-slogan =====> ok
-    ngon ngu Viet-Anh =====> ok
-    lam footer  =====> ok
-    deploy =>ok
+    Lam container nowchord co dinh------------------->ok
+    clear || xoa item la nowchord => set nowchord = null. show all form la set nowchord lien ------------------->ok
+    mode multiple: xoa la mat nowchord lien. them hop am vao la cap nhat lien =------------------->ok
+    thanh slider interval xau vl ------------------->ok
+    thay bo cuc cac button ------------------->ok
+    Thay bo mau button  ------------------->ok
+    Set bien mau css global ------------------->ok
+    Lam tab header dep hon ------------------->ok
+    Logo-favicon-slogan ------------------->ok
+    ngon ngu Viet-Anh ------------------->ok
+    lam footer  ------------------->ok
+    deploy ------------------->ok
 
     beardcumd giam chu =====> chua can
     toast thong bao  =====> chua can
 
 2/10
-    wellcomepage ==>ok 
-    footer VNUS ==>ok
+    wellcomepage ------------------->ok 
+    footer VNUS ------------------->ok
 
 4/10
-    responsive====>ok
-    draggable qua nhay tren mobile ===>ok
+    responsive------------------->ok
+    draggable qua nhay tren mobile ------------------->ok
 5/10    
-    bug: nut mobile nho (settingbutton, )=====>ok 
+    bug: nut mobile nho (settingbutton, )------------------->ok 
 7/10
-    bug:chordring khi only mode dang bat ====>ok
-    passing chord nen co mau khac====>ok
-    auto chuyen sang color chord====>ok
-    auto chuyen passing chord ====>ok
-    change all form ====>ok
-    chordring ngoai ===>ok
+    bug:chordring khi only mode dang bat ------------------->ok
+    passing chord nen co mau khac------------------->ok
+    auto chuyen sang color chord------------------->ok
+    auto chuyen passing chord ------------------->ok
+    change all form ------------------->ok
+    chordring ngoai ------------------->ok
 
 toi 7/10, sang 8/10
-    bug: first chord, find capo. js pass by ref, value ====>ok
+    bug: first chord, find capo. js pass by ref, value ------------------->ok
     
-    Pentatonic
-    Note    
-    cai gio luyen tap
-    backend
-    login
-    save
-    testcase full
+9/10
+    chuyen tong ------------------->ok
 
+10/10
+    hidden bug: change tone but not change toneOption
+    toolips
+    standardize all code of project 
+
+COMING:
+    -Note/Pentatonic practice
+    -Finger practice
+    -Backend
+    -Login/Profile page
+    -Clock/Save
+    -Doc: All theory
+    -Test/Quiz

@@ -3,12 +3,12 @@ import { ChordPageContext } from "./../provider/ChordProvider";
 import { Button } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  fa7,
   faAnglesRight,
   faArrowUpRightDots,
   faBolt,
   faBridge,
   faBroom,
+  faDownLong,
   faGear,
   faPersonWalkingArrowRight,
   faPlus,
@@ -16,6 +16,7 @@ import {
   faShapes,
   faStairs,
   faTrash,
+  faUpLong,
 } from "@fortawesome/free-solid-svg-icons";
 import Select from "react-select";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
@@ -47,8 +48,11 @@ const ListPart = () => {
     findFifth,
     handleHideForm,
     handleHideDegree,
+
+    changeTone,
   } = useContext(ChordPageContext);
-  const { theme, language, groupNav } = useContext(GlobalContext);
+  const { theme, language } = useContext(GlobalContext);
+
   return (
     <div
       className={`ListPart-ChordPage med:w-full med:min-h-[80dvh] med:max-h-[80dvh] med:h-[80dvh] med:pb-20 ${theme}-Background`}
@@ -68,7 +72,6 @@ const ListPart = () => {
             </button>
             {ShowMenu && (
               <>
-                {" "}
                 <button
                   onClick={handleHideForm}
                   role="button"
@@ -119,7 +122,21 @@ const ListPart = () => {
                   >
                     <FontAwesomeIcon icon={faPersonWalkingArrowRight} />{" "}
                   </button>
-                )}
+                )}{" "}
+                <button
+                  onClick={() => changeTone(false)}
+                  role="button"
+                  className={`button-ListPart   `}
+                >
+                  <FontAwesomeIcon icon={faDownLong} />{" "}
+                </button>
+                <button
+                  onClick={() => changeTone(true)}
+                  role="button"
+                  className={`button-ListPart   `}
+                >
+                  <FontAwesomeIcon icon={faUpLong} />{" "}
+                </button>
                 <button className="button-ListPart" role="button">
                   <FontAwesomeIcon icon={faSave} />{" "}
                 </button>{" "}

@@ -1,5 +1,6 @@
 import { deromanize } from "romans";
 import { List } from "../provider/ChordProvider";
+import { NoteList } from "../options/options";
 
 export const addTimestamp = (chord, isPassingChord = false) => {
   if (!Array.isArray(chord)) return chord;
@@ -214,4 +215,19 @@ export const analyzeName = (chordName) => {
 
   const Tail = findDifference(chordName, Head);
   return { Head, Tail };
+};
+
+export const findNextoRoot = (originRoot: string, findNext = true) => {
+  const idx = NoteList.findIndex((x) => x.split("/").includes(originRoot));
+  if (idx === -1) return null;
+
+  if (findNext) {
+    return idx === NoteList.length - 1
+      ? NoteList[0].split("/")[0]
+      : NoteList[idx + 1].split("/")[0];
+  } else {
+    return idx === 0
+      ? NoteList[NoteList.length - 1].split("/")[0]
+      : NoteList[idx - 1].split("/")[0];
+  }
 };

@@ -19,13 +19,18 @@ import {
   analyzeName,
   findChordItem,
   findDegree,
+  findNextoRoot,
   refreshChordName,
   replaceArrInQueue,
   replaceChordInQueue,
 } from "./../utils/ChordUtils";
 import { Theme } from "../types/themes";
 import { GlobalContext } from "../../../provider/globalProvider";
-import { addTimestamp, createGroupFromOneChord, pickFirstChordFromGroup } from "../utils/ChordUtils";
+import {
+  addTimestamp,
+  createGroupFromOneChord,
+  pickFirstChordFromGroup,
+} from "../utils/ChordUtils";
 import { findNext } from "../utils/utils";
 
 export const List = Object.entries(ListJSON);
@@ -249,7 +254,11 @@ export function ChordProvider({ children }) {
     }
     return chord;
   };
-  const addDegreeToPowerChord = (chord, degree, passing = undefined) => {
+  const addDegreeToPowerChord = (
+    chord,
+    degree: number,
+    passing = undefined
+  ) => {
     if (!chord || !degree || chord.includes("-")) return chord;
     let newchord = chord;
     newchord[0] = `${romanize(degree)}-${chord[0]}`;
@@ -516,6 +525,26 @@ export function ChordProvider({ children }) {
     setQueue(newItems);
   };
 
+  const findNextoTone = (chord, isNext = true) => {
+    const analName = analyzeName(refreshChordName(chord[0]));
+    let nextChord = findChordItem(
+      findNextoRoot(analName.Head, isNext) + analName.Tail
+    );
+    if (!nextChord) return null;
+    nextChord = addDegreeToPowerChord(nextChord, findDegree(chord[0], true));
+    const returnChord = [];
+    returnChord.push(nextChord[0], nextChord[1], chord[2]);
+    return returnChord;
+  };
+
+  const changeTone = (isUp = true) => {
+    const newQueue = Queue.map((chord) => findNextoTone(chord, isUp)).filter(
+      (x) => x !== null
+    );
+    setQueue(newQueue);
+    setNowChord(newQueue[0]);
+  };
+
   useEffect(() => {
     handleChangeMode(true);
   }, [Queue]);
@@ -560,6 +589,9 @@ export function ChordProvider({ children }) {
         handleChangeAllowRepeat,
         empowerOneChord,
         findFifth,
+        addDegreeToPowerChord,
+        setQueue,
+        changeTone,
       }}
     >
       {children}

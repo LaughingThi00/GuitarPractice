@@ -64,6 +64,20 @@ export const optionsHarmonyBased = [
   { value: HarmonyType.Advanced, label: HarmonyType.Advanced },
 ];
 
+export const NoteList = [
+  "C",
+  "C#/Db",
+  "D",
+  "D#/Eb",
+  "E",
+  "F",
+  "F#/Gb",
+  "G",
+  "A",
+  "A#/Bb",
+  "B",
+];
+
 export const optionChordSet = [
   { name: TonicType.Basic, set: ["", "m", "7"] },
   {
