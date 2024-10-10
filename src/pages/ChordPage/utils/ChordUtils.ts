@@ -68,9 +68,34 @@ export function translateData(chord, isUnchangedFret = true) {
     }
   });
 
-  const Finger = Chord.f.split(";")[0].split("");
-  let fng = 0;
+  let Finger = Chord.f.split(";")[0].split("");
 
+  if (!Finger.length) {
+    Finger = [];
+    const calFret = ThisChordFret.filter((f) => ![-1, 0].includes(f));
+    const minFret = Math.min(...calFret);
+
+    const staging = [];
+    calFret.forEach((f) => {
+      const existStaging = staging.find((s) => s.fret === f);
+      if (existStaging)
+        staging.push({ fret: f, finger: existStaging.finger + 1 });
+      staging.push({
+        fret: f,
+        finger: staging.find((s) => s.finger === f - minFret + 1)
+          ? f - minFret + 2
+          : f - minFret + 1,
+      });
+    });
+    Finger = staging.map((s) => s.finger);
+    const calFing = Math.max(...Finger) - Math.min(...Finger);
+    if (calFing > 3) {
+      const minFing = Math.min(...Finger);
+      Finger = Finger.map((f) => (f - minFing > 3 ? minFing + 3 : f));
+    }
+  }
+
+  let fng = 0;
   ThisChordFret.forEach((p) => {
     switch (p) {
       case -1:
@@ -82,12 +107,12 @@ export function translateData(chord, isUnchangedFret = true) {
         fng += 1;
     }
   });
+
   let capo = null;
 
   capo = isUnchangedFret
     ? findCapo(ThisChordFret, true)
     : findCapo(ThisChordFret, false);
-
   return { fret: ThisChordFret, finger: ThisChordFinger, capo };
 }
 

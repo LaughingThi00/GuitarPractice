@@ -543,6 +543,17 @@ export function ChordProvider({ children }) {
     );
     setQueue(newQueue);
     setNowChord(newQueue[0]);
+    if (toneOption) {
+      const newTone = findNextoTone(toneOption.label.split("m"), isUp)[0].split(
+        " "
+      )[0];
+      const nextTone = optionsTone.find(
+        (tone) =>
+          tone.label ===
+          (toneOption.label.includes("m") ? newTone + "m" : newTone)
+      );
+      setToneOption(nextTone);
+    }
   };
 
   useEffect(() => {
