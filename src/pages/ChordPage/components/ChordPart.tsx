@@ -6,7 +6,6 @@ import { GlobalContext } from "../../../provider/globalProvider";
 
 const ChordPart = () => {
   const { NowChord } = useContext(ChordPageContext);
-  const { groupNav } = useContext(GlobalContext);
 
   return (
     <div

@@ -150,7 +150,7 @@ export function ChordProvider({ children }) {
 
   const handleSliderIntervalChordChange = (event) => {
     setIntervalChord(event.target.value);
-    event.target.style.setProperty("--value", event.target.value / 200);
+    event.target.style.setProperty("--value", event.target.value / 100);
     document.documentElement.style.setProperty(
       "--pointer",
       Theme[theme].ChordPage.SettingPart.Slider.Pointer

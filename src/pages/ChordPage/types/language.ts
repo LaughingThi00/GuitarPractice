@@ -52,6 +52,11 @@ export const lang = {
       ],
     },
     SettingPart: {
+      ToolTip: {
+        AllowRepeat: "Allow to add an existing chord to queue",
+        Mode: `"Display" chords for each interval time or "Obverve" only one chord`,
+        Content: `Change mode of chord queue`,
+      },
       AllowRepeat: {
         Only: "Only",
         Repeated: "Repeated",
@@ -70,7 +75,6 @@ export const lang = {
       HarmonyTypeOption: {
         Basic: "Basic",
         Advanced: "Advanced",
-
       },
       PlaceHolder: {
         chooseTone: "Choose a tone",
@@ -83,6 +87,24 @@ export const lang = {
       Tempo: "Tempo",
     },
     ListPart: {
+      ToolTip: {
+        Setting: "Hide setting list",
+        DisplayForm: "Display order of hand position",
+        DisplayDegree: "Display degree of chord",
+        ChangeAllForm: "Change hand positions for all queue",
+        FindFifthAll: "Make passing chord for all queue",
+        IncreaseTone: "Increase tone",
+        DecreaseTone: "Decrease tone",
+        Save: "Save current queue",
+        Clear: "Clear queue",
+        Item: {
+          ChangeForm: "Change hand position",
+          FindFifth: "Make passing chord",
+          Empower: "Make color chord",
+          Delete: "Remove from queue",
+          ShowAll:"Add all hand positions"
+        },
+      },
       PlaceHolder: {
         chooseChord: "Choose a chord",
       },
@@ -139,13 +161,18 @@ export const lang = {
       ],
     },
     SettingPart: {
+      ToolTip: {
+        AllowRepeat: "Cho phép thêm một hợp âm đã tồn tại vào hàng đợi",
+        Mode: `Trình chiếu lần lượt các hợp âm trên hàng đợi`,
+        Content: `Thay chế độ hàng đợi`,
+      },
       AllowRepeat: {
         Only: "Duy nhất",
         Repeated: "Lặp lại",
       },
       ChangingMode: { Single: "Dừng", Multiple: "Trình diễn" },
       Content: {
-        Custom: "Tùy ý",
+        Custom: "Tùy chỉnh",
         TonicBased: "Theo chủ âm",
         HarmonyBased: "Theo hòa âm",
       },
@@ -169,6 +196,24 @@ export const lang = {
       Tempo: "Nhịp độ",
     },
     ListPart: {
+      ToolTip: {
+        Setting: "Hiện các cài đặt",
+        DisplayForm: "Hiện thứ tự thế bấm",
+        DisplayDegree: "Hiện bậc hợp âm",
+        ChangeAllForm: "Chuyển đổi toàn bộ thế bấm của hàng đợi",
+        FindFifthAll: "Tạo passing chord cho toàn bộ hàng đợi",
+        IncreaseTone: "Tăng tông",
+        DecreaseTone: "Giảm tông",
+        Save: "Lưu hàng đợi",
+        Clear: "Xóa hàng đợi",
+        Item: {
+          ChangeForm: "Đổi thế bấm",
+          FindFifth: "Tạo passing chord",
+          Empower: "Hợp âm nâng cao",
+          Delete: "Xóa khỏi hàng đợi",
+          ShowAll:"Thêm tất cả thế bấm"
+        },
+      },
       PlaceHolder: {
         chooseChord: "Chọn một hợp âm",
       },

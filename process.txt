@@ -53,6 +53,10 @@ toi 7/10, sang 8/10
     toolips ------processing: 30%------
     standardize all code of project ------processing: 20%------
 
+12/10
+    toolips ------------------->ok
+    standardize all code of project ------------------->ok
+
 COMING:
     -Note/Pentatonic practice
     -Finger practice

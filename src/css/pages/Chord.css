@@ -118,11 +118,9 @@
   font-weight: bold;
   text-align: center;
 
-  border-radius: 0.25rem;
-  border-right: 1.5px solid rgb(43, 42, 42);
-  border-bottom: 1.5px solid rgb(43, 42, 42);
-  box-shadow: 0rem 0.4rem 0.8rem 0.2rem rgba(0, 0, 0, 0.5);
-
+  box-shadow: 2px 2px 2px black;
+  border: 0;
+  border-radius: 0.5rem;
   cursor: pointer;
 }
 
