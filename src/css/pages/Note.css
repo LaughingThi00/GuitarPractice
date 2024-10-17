@@ -1,0 +1,14 @@
+.NotePage {
+    display: flex;
+    flex-direction: row;
+    box-sizing: border-box;
+    justify-content: center;
+    align-items: start;
+    margin-top: 10vh;
+    padding-top: 1vh;
+    background-attachment: scroll;
+    min-height: 100vh;
+    /* height: 100vh; */
+    height: fit-content;
+    position: relative;
+  }

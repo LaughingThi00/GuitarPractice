@@ -50,7 +50,9 @@ const Header = () => {
           </NavLink>
         </li>
         <li>
-          <NavLink to="https://www.oolimo.com/en/guitar-chords/analyze">
+          {/* <NavLink to="https://www.oolimo.com/en/guitar-chords/analyze"> */}
+          <NavLink to="/note">
+
             {lang[language].Header.tabs.note}
           </NavLink>
         </li>
@@ -108,10 +110,10 @@ const Header = () => {
         
         onClick={toggleLanguage}
       >
-        {language}{" "}
+        {language}
       </button>
       <button className="button-Header w-1/4" >
-        <FontAwesomeIcon icon={faRightToBracket} />{" "}
+        <FontAwesomeIcon icon={faRightToBracket} />
       </button>
     </div>
   );

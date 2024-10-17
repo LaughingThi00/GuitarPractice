@@ -48,7 +48,7 @@ const Footer: React.FC = () => {
             </div>
           );
         })}
-      </div>{" "}
+      </div>
       <div className="text-center mt-20 mb-2">
         <p className="opacity-50 text-sm">© Laughing Thi</p>
       </div>

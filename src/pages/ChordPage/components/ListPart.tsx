@@ -305,7 +305,7 @@ const ListPart = () => {
                 }
           }
         >
-          <FontAwesomeIcon icon={icon} />{" "}
+          <FontAwesomeIcon icon={icon} />
         </Button>
       );
       return hasTooltip ? (
@@ -388,7 +388,7 @@ const ListPart = () => {
             <div className="flex flex-col">
               {!HideDegree && (
                 <h3 className="text-xs text-red-500">
-                  {" "}
+                  
                   {findDegree(nameChord, false)}
                 </h3>
               )}
@@ -397,7 +397,7 @@ const ListPart = () => {
                   item[2].includes("PSC") ? "text-gray-500" : "text-black"
                 }`}
               >
-                {" "}
+                
                 {refreshChordName(nameChord)}
               </h3>
               {!HideForm && (
@@ -411,7 +411,7 @@ const ListPart = () => {
                   item[2].includes("PSC") ? "text-gray-500" : "text-black"
                 }`}
               >
-                {" "}
+                
                 {refreshChordName(nameChord)}
               </h3>
               {!HideForm && (

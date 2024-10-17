@@ -320,7 +320,7 @@ export function ChordProvider({ children }) {
       harmonyOption.value === HarmonyType.Advanced
     ) {
       if (!Built) setBuilt(true);
-    }
+    } else setNowChord(res[0]);
   };
   useLayoutEffect(() => {
     if (

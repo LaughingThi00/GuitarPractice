@@ -58,6 +58,7 @@ toi 7/10, sang 8/10
     standardize all code of project ------------------->ok
 
 COMING:
+    -bug: Khong the empower cho ring creational advanced. basic thi binh thuong. Sus4+truong -> ve color chord khac: khong duoc Am 51.
     -Note/Pentatonic practice
     -Finger practice
     -Backend

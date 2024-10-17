@@ -17,7 +17,7 @@ const ChordPage = () => {
         <SettingPart />
         <ChordPart />
         <ListPart />
-      </div>{" "}
+      </div>
     </ChordProvider>
   );
 };

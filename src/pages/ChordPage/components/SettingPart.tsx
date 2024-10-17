@@ -204,7 +204,7 @@ const SettingPart = () => {
                 Content === ContentType.TonicBased ? optionsNote : optionsTone
               }
               className="w-4/5 m-1 med:w-full"
-            />{" "}
+            />
             {Content === ContentType.HarmonyBased && (
               <CreatableSelect
                 isClearable
@@ -268,7 +268,7 @@ const SettingPart = () => {
               onClick={() => handleBuildChorSet()}
               role="button"
             >
-              <FontAwesomeIcon icon={faArrowsToDot} />{" "}
+              <FontAwesomeIcon icon={faArrowsToDot} />
             </button>
           </div>
         )}

@@ -69,7 +69,7 @@ export const GlobalProvider = ({ children }) => {
         handleScroll,
       }}
     >
-      {" "}
+      
       {children}
     </GlobalContext.Provider>
   );
