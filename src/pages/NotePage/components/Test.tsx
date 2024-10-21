@@ -57,7 +57,7 @@ const Test = () => {
     );
   }, []); // useEffect runs once after the component mounts
 
-  return <div id="cumeo1"></div>;
+  return <div id="cumeo1" className=" font-bold text-2xl"></div>;
 };
 
 export default Test;

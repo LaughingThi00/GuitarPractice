@@ -8,7 +8,7 @@ export const lang = {
         chord: "Chord",
         pentatonic: "Pentatonic",
         note: "Note",
-        song: "Song",
+        ear: "Ear Trainer",
         introduce: "Introduce",
       },
       theme: {
@@ -117,7 +117,7 @@ export const lang = {
         chord: "Hợp âm",
         pentatonic: "Ngũ cung",
         note: "Nốt",
-        song: "Bài hát",
+        ear: "Cảm âm",
         introduce: "Giới thiệu",
       },
       theme: {

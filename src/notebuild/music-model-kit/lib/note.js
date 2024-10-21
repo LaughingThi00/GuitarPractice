@@ -65,7 +65,7 @@ Note.Name = class {
         this.sharp_name = this.type;
         this.flat_name = this.type;
         this.file_name = ["audio/notes/C.mp3"];
-        this.color = new Color("#77CDFF");
+        this.color = new Color("#FF5733");
         this.associated_midi_values = get_associated_midi_values(0);
         break;
       case Note.Name.TYPE.C_sharp:
@@ -77,7 +77,7 @@ Note.Name = class {
           "audio/notes/or.mp3",
           "audio/notes/D_flat.mp3",
         ];
-        this.color = new Color("#EC8305");
+        this.color = new Color("#33FF57");
         this.associated_midi_values = get_associated_midi_values(1);
         break;
       case Note.Name.TYPE.D:
@@ -85,7 +85,7 @@ Note.Name = class {
         this.sharp_name = this.type;
         this.flat_name = this.type;
         this.file_name = ["audio/notes/D.mp3"];
-        this.color = new Color("#DAF7A6");
+        this.color = new Color("#3357FF");
         this.associated_midi_values = get_associated_midi_values(2);
         break;
       case Note.Name.TYPE.D_sharp:
@@ -97,7 +97,7 @@ Note.Name = class {
           "audio/notes/or.mp3",
           "audio/notes/E_flat.mp3",
         ];
-        this.color = new Color("#FF5733");
+        this.color = new Color("#FF33F6");
         this.associated_midi_values = get_associated_midi_values(3);
         break;
       case Note.Name.TYPE.E:
@@ -105,7 +105,7 @@ Note.Name = class {
         this.sharp_name = this.type;
         this.flat_name = this.type;
         this.file_name = ["audio/notes/E.mp3"];
-        this.color = new Color("#33FF57");
+        this.color = new Color("#FFC300");
         this.associated_midi_values = get_associated_midi_values(4);
         break;
       case Note.Name.TYPE.F:
@@ -113,7 +113,7 @@ Note.Name = class {
         this.sharp_name = this.type;
         this.flat_name = this.type;
         this.file_name = ["audio/notes/F.mp3"];
-        this.color = new Color("#33FFF3");
+        this.color = new Color("#581845");
         this.associated_midi_values = get_associated_midi_values(5);
         break;
       case Note.Name.TYPE.F_sharp:
@@ -125,7 +125,7 @@ Note.Name = class {
           "audio/notes/or.mp3",
           "audio/notes/G_flat.mp3",
         ];
-        this.color = new Color("#3380FF");
+        this.color = new Color("#C70039");
         this.associated_midi_values = get_associated_midi_values(6);
         break;
       case Note.Name.TYPE.G:
@@ -133,7 +133,7 @@ Note.Name = class {
         this.sharp_name = this.type;
         this.flat_name = this.type;
         this.file_name = ["audio/notes/G.mp3"];
-        this.color = new Color("#5733FF");
+        this.color = new Color("#FF5733");
         this.associated_midi_values = get_associated_midi_values(7);
         break;
       case Note.Name.TYPE.G_sharp:
@@ -145,7 +145,7 @@ Note.Name = class {
           "audio/notes/or.mp3",
           "audio/notes/A_flat.mp3",
         ];
-        this.color = new Color("#FF33A1");
+        this.color = new Color("#DAF7A6");
         this.associated_midi_values = get_associated_midi_values(8);
         break;
       case Note.Name.TYPE.A:
@@ -153,7 +153,7 @@ Note.Name = class {
         this.sharp_name = this.type;
         this.flat_name = this.type;
         this.file_name = ["audio/notes/A.mp3"];
-        this.color = new Color("#FF3388");
+        this.color = new Color("#900C3F");
         this.associated_midi_values = get_associated_midi_values(9);
         break;
       case Note.Name.TYPE.A_sharp:
@@ -165,7 +165,7 @@ Note.Name = class {
           "audio/notes/or.mp3",
           "audio/notes/B_flat.mp3",
         ];
-        this.color = new Color("#FF8C33");
+        this.color = new Color("#FFC0CB");
         this.associated_midi_values = get_associated_midi_values(10);
         break;
       case Note.Name.TYPE.B:
@@ -173,7 +173,7 @@ Note.Name = class {
         this.sharp_name = this.type;
         this.flat_name = this.type;
         this.file_name = ["audio/notes/B.mp3"];
-        this.color = new Color("#FF33F6");
+        this.color = new Color("#3498DB");
         this.associated_midi_values = get_associated_midi_values(11);
         break;
     }

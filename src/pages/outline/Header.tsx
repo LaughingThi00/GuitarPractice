@@ -57,7 +57,7 @@ const Header = () => {
           </NavLink>
         </li>
         <li>
-          <NavLink to="/song">{lang[language].Header.tabs.song}</NavLink>
+          <NavLink to="https://jasonfleischer.github.io/eartrainer/">{lang[language].Header.tabs.ear}</NavLink>
         </li>
         <li>
           <NavLink to="/introduce">
@@ -159,7 +159,7 @@ const Header = () => {
             >
               <NavLink
                 className={`w-full hover:${theme}-Header-Item-Color hover:opacity-80`}
-                to="https://www.oolimo.com/en/guitar-chords/analyze"
+                to="/note"
               >
                 {lang[language].Header.tabs.note}
               </NavLink>
@@ -169,9 +169,9 @@ const Header = () => {
             >
               <NavLink
                 className={`w-full hover:${theme}-Header-Item-Color hover:opacity-80`}
-                to="/song"
+                to="https://jasonfleischer.github.io/eartrainer/"
               >
-                {lang[language].Header.tabs.song}
+                {lang[language].Header.tabs.ear}
               </NavLink>
             </li>
             <li

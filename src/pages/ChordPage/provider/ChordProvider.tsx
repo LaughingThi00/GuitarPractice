@@ -357,7 +357,9 @@ export function ChordProvider({ children }) {
     idx = Queue.findIndex((item) => item[2] === chord[2]);
     if (chord[2]) next[2] = chord[2];
     if (idx !== -1) {
-      Queue[idx] = next;
+      Queue[idx][0] = next[0];
+      Queue[idx][1] = next[1];
+
       setQueue(Queue);
       setNowChord(next);
     }
