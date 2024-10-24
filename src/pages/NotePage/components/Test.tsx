@@ -1,63 +1,42 @@
-import React, { useEffect } from "react";
-import fretboardBuilder from "./../../../notebuild/fretboard";
-import * as musicKit from "./../../../notebuild/music-model-kit";
+import React, { useMemo } from "react";
+import Guitar, { getRenderFingerSpn } from "react-guitar";
+import { standard } from "react-guitar-tunings";
+import useSound, { withSamples } from "react-guitar-sound";
+
+function SampleGuitarWithSound() {
+  const strings = useMemo(() => [0, 1, 2, 2, 0, -1], []);
+  const { play } = useSound({ fretting: strings, tuning: standard });
+
+  return (
+    <Guitar
+      strings={strings}
+      renderFinger={getRenderFingerSpn(standard)}
+      playOnHover
+      onPlay={play}
+    />
+  );
+}
+
+const flamencoGuitar = withSamples({
+  E2: "https://react-guitar.com/samples/E2.mp3",
+  D3: "https://react-guitar.com/samples/D3.mp3",
+  G3: "https://react-guitar.com/samples/G3.mp3",
+  E4: "https://react-guitar.com/samples/E4.mp3",
+});
+
+function SampleGuitarWithSound2() {
+  const strings = useMemo(() => [0, 1, 2, 2, 0, -1], []);
+  const { play, strum } = useSound({
+    instrument: flamencoGuitar,
+    fretting: strings,
+    tuning: standard,
+  });
+
+  return <Guitar strings={strings} onPlay={play} />;
+}
 
 const Test = () => {
-  useEffect(() => {
-    musicKit.init();
-
-    const fretboardView = fretboardBuilder({
-      id: "cumeo1",
-      width: 1000,
-      onClick: function (note, isOn) {
-        if (isOn) {
-          fretboardView.drawNote(note);
-        } else {
-          fretboardView.clearNote(note);
-        }
-      },
-      hover: true,
-      showLabels: true,
-      darkMode: false,
-    });
-
-    // // draw a note
-    // let midiValue = 45; // A2
-    // let note = musicKit.all_notes[midiValue];
-    // fretboardView.drawNote(note);
-
-// // draw a chord
-// let midiValue = 60 // C4 = middle C
-// let note = musicKit.all_notes[midiValue];
-// let chord = new musicKit.Chord(note, musicKit.Chord.TYPE.minor);
-// fretboardView.drawChord(chord);
-
-// // draw a scale
-// let midiValue = 62 // D4
-// let note = musicKit.all_notes[midiValue];
-// let scale = new musicKit.Scale(note, musicKit.Scale.TYPE.Aeolian); // Dm scale
-// fretboardView.drawScale(scale);
-
-
-    // clear all drawings
-    fretboardView.clear();
-
-    // add a midi listener
-    new musicKit.MidiListener(
-      function (midiValue, channel, velocity) {
-        // note on
-        let note = musicKit.all_notes[midiValue];
-        fretboardView.drawNote(note);
-      },
-      function (midiValue, channel, velocity) {
-        // note off
-        let note = musicKit.all_notes[midiValue];
-        fretboardView.clearNote(note);
-      }
-    );
-  }, []); // useEffect runs once after the component mounts
-
-  return <div id="cumeo1" className=" font-bold text-2xl"></div>;
+  return <SampleGuitarWithSound />;
 };
 
 export default Test;

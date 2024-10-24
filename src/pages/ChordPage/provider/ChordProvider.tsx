@@ -58,7 +58,7 @@ export function ChordProvider({ children }) {
   const handleHideDegree = () => {
     setHideDegree(!HideDegree);
   };
-  const [AllowRepeat, setAllowRepeat] = useState(false);
+  const [AllowRepeat, setAllowRepeat] = useState(true);
   const handleChangeAllowRepeat = () => {
     setAllowRepeat(!AllowRepeat);
   };
