@@ -58,11 +58,11 @@ export function ChordProvider({ children }) {
   const handleHideDegree = () => {
     setHideDegree(!HideDegree);
   };
-  const [AllowRepeat, setAllowRepeat] = useState(true);
+  const [AllowRepeat, setAllowRepeat] = useState(false);
   const handleChangeAllowRepeat = () => {
     setAllowRepeat(!AllowRepeat);
   };
-  const [Content, setContent] = useState(ContentType.Custom);
+  const [Content, setContent] = useState(ContentType.HarmonyBased);
   const handleChangeContent = () => {
     switch (Content) {
       case ContentType.Custom:
@@ -82,7 +82,7 @@ export function ChordProvider({ children }) {
     setHarmonyOption(null);
     setRingOption(null);
   };
-  const [ShowMenu, setShowMenu] = useState(false);
+  const [ShowMenu, setShowMenu] = useState(true);
   const handleShowMenu = () => {
     setShowMenu(!ShowMenu);
   };
@@ -144,8 +144,32 @@ export function ChordProvider({ children }) {
   };
   const [NowChord, setNowChord] = useState(null);
   const [IntervalChord, setIntervalChord] = useState(1000);
+
+  const listRef = useRef<HTMLUListElement | null>(null);
+
+  function findItemByKey(
+    collection: HTMLCollection,
+    key: string
+  ): Element | null {
+    const item = Array.from(collection).find((element) => {
+      return element.getAttribute("scrollid") === key;
+    });
+
+    return item || null;
+  }
+
+  const scrollToItem = (key: string) => {
+    if (listRef.current) {
+      const item = findItemByKey(listRef.current.children, key);
+      if (item) {
+        item.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      }
+    }
+  };
+
   useEffect(() => {
     NowChordRef.current = NowChord;
+    if (NowChord) scrollToItem(NowChord[2]);
   }, [NowChord]);
 
   const handleSliderIntervalChordChange = (event) => {
@@ -579,6 +603,7 @@ export function ChordProvider({ children }) {
         tonicOption,
         harmonyOption,
         ChordList,
+        listRef,
         handleShowMenu,
         handleChangeMode,
         handleChangeRingOption,

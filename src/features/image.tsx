@@ -46,13 +46,13 @@ export function createChordImage(chord, showName) {
   }
 
   return (
-    <div className="">
+    <div className="h-full">
       <span>{showName && name}</span>
       <div className="relative flex flex-row justify-center items-center">
-        <div className="absolute left-22pc top-1/4 h-3/4 text-xl med:left-20pc med:top-22pc med:text-sm">
-          {![0, 1].includes(data.capo) ? `[${data.capo}fr]` : ` `}
+        <div className="absolute left-22pc top-1/4 h-3/4 text-xl med:left-5pc med:top-22pc med:text-sm">
+          {![0].includes(data.capo) ? `[${data.capo}fr]` : ` `}
         </div>
-        <div className="flex flex-row items-center justify-center w-1/2 h-1/2 med:h-full med:w-full">
+        <div className="flex flex-row items-center justify-center w-1/2 h-1/2 med:h-90pc med:w-90pc">
           <MyChord fret={data.fret} finger={data.finger} />
         </div>
       </div>

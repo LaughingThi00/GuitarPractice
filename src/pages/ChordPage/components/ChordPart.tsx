@@ -15,7 +15,7 @@ const ChordPart = () => {
   };
   return (
     <div
-      className="ChordPart-ChordPage med:w-full med:min-h-[50vh] med:h-[50vh]"
+      className="ChordPart-ChordPage med:w-full med:min-h-[50vh] med:h-[55vh]"
       id="_ChordPart"
     >
       <div className="MyChord-Container min-h-[80vh] relative med:min-h-[50vh]   ">

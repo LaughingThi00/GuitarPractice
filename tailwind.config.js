@@ -15,8 +15,11 @@ module.exports = {
       },
       height: {
         "1/3vh": "33.33vh",
+        "90pc": "90%",
       },
-      inset: {
+      width: { "90pc": "90%" },
+      inset: {        "5pc": "5%",
+
         "15pc": "15%",
         "22pc": "22%",
         "20pc": "20%",

@@ -10,6 +10,8 @@ export const optionsRing: readonly any[] = [
   { value: "62514736", label: "62514736" },
   { value: "63456343", label: "63456343" },
   { value: "15634125", label: "15634125 (Canon)" },
+  { value: "1234567", label: "1234567" },
+
 ];
 
 export const optionsTone = [

@@ -121,16 +121,16 @@ export const findCapo = (fret, isUnchanged = true): number => {
   if (!Array.isArray(fret)) {
     fret = fret.split(",").map((f) => (f === "x" ? -1 : Number(f)));
   }
-  let capo = Math.min(...fret.filter((f) => f !== 0 && f !== -1), 100);
-  capo = capo === 100 ? 0 : capo - 1;
+  let originCapo = Math.min(...fret.filter((f) => ![0, -1].includes(f)), 100);
+  let capo = originCapo === 100 ? 0 : originCapo - 1;
 
   if (!isUnchanged) {
     fret.forEach((f, i) => {
-      if (f !== 0 && f !== -1) fret[i] -= capo;
+      if (![0, -1].includes(f)) fret[i] -= capo;
     });
   }
 
-  return capo > 1 ? capo + 1 : capo;
+  return originCapo === 100 ? 0 : originCapo;
 };
 
 export function quickSortChordGroup(arr) {

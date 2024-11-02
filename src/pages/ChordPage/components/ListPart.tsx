@@ -50,6 +50,7 @@ const ListPart = () => {
     handleHideForm,
     handleHideDegree,
     changeTone,
+    listRef,
   } = useContext(ChordPageContext);
   const { theme, language } = useContext(GlobalContext);
 
@@ -388,7 +389,6 @@ const ListPart = () => {
             <div className="flex flex-col">
               {!HideDegree && (
                 <h3 className="text-xs text-red-500">
-                  
                   {findDegree(nameChord, false)}
                 </h3>
               )}
@@ -397,7 +397,6 @@ const ListPart = () => {
                   item[2].includes("PSC") ? "text-gray-500" : "text-black"
                 }`}
               >
-                
                 {refreshChordName(nameChord)}
               </h3>
               {!HideForm && (
@@ -411,7 +410,6 @@ const ListPart = () => {
                   item[2].includes("PSC") ? "text-gray-500" : "text-black"
                 }`}
               >
-                
                 {refreshChordName(nameChord)}
               </h3>
               {!HideForm && (
@@ -422,6 +420,7 @@ const ListPart = () => {
         </div>
       );
     };
+
     return (
       <div className="Chord-QueueList">
         <DragDropContext onDragEnd={handleOnDragEnd}>
@@ -430,7 +429,10 @@ const ListPart = () => {
               <ul
                 className="w-full med:w-1/2 mx-auto pt-1 pb-3 flex flex-col justify-start items-center overflow-y-scroll"
                 {...provided.droppableProps}
-                ref={provided.innerRef}
+                ref={(el) => {
+                  provided.innerRef(el);
+                  listRef.current = el;
+                }}
               >
                 {Queue &&
                   Queue.map((item, index) => {
@@ -448,6 +450,7 @@ const ListPart = () => {
                             style={{
                               ...provided.draggableProps.style,
                             }}
+                            scrollid={item[2]}
                             className="Chord-QueueList-Item med:h-[10vh] med:justify-center "
                             key={item[2]}
                           >
