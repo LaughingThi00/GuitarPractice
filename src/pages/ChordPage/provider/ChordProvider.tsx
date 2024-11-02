@@ -159,17 +159,40 @@ export function ChordProvider({ children }) {
   }
 
   const scrollToItem = (key: string) => {
+    const item = findItemByKey(listRef.current.children, key);
+
     if (listRef.current) {
-      const item = findItemByKey(listRef.current.children, key);
-      if (item) {
-        item.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      const itemToScroll = findItemByKey(listRef.current.children, key);
+
+      const currentItem = NowChordRef.current
+        ? findItemByKey(listRef.current.children, NowChordRef.current[2])
+        : null;
+
+      if (itemToScroll && currentItem) {
+        const container = listRef.current as HTMLElement;
+        const itemToScrollElement = itemToScroll as HTMLElement;
+        const currentItemElement = currentItem as HTMLElement;
+
+        const itemToScrollOffset =
+          itemToScrollElement.getBoundingClientRect().top -
+          container.getBoundingClientRect().top;
+        const currentItemOffset =
+          currentItemElement.getBoundingClientRect().top -
+          container.getBoundingClientRect().top;
+
+        const scrollDistance = itemToScrollOffset - currentItemOffset;
+
+        container.scrollTo({
+          top: container.scrollTop + scrollDistance,
+          behavior: "smooth",
+        });
       }
     }
   };
 
   useEffect(() => {
-    NowChordRef.current = NowChord;
     if (NowChord) scrollToItem(NowChord[2]);
+    NowChordRef.current = NowChord;
   }, [NowChord]);
 
   const handleSliderIntervalChordChange = (event) => {
